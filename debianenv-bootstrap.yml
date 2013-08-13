@@ -1,11 +1,11 @@
 ---
-user: root
-tasks:
-- name: Install python-apt and aptitude
-  shell: apt-get update && apt-get install python-apt aptitude
-- name: Do any package upgrades and install required things
-  apt: upgrade=dist pkg=most,zsh,vim,vim-scripts,git,subversion,tmux,multitail,mtr-tiny,curl,dnsutils,sudo
-- name: Get dotfiles repo
-  git: repo=https://github.com/staticsafe/dotfiles.git dest=~/dotfiles
-- name: Run envsetup script from dotfiles repo
-  shell: ~/dotfiles/envsetup.sh >> bootstrap.txt
+- user: root
+  tasks:
+  - name: Install python-apt and aptitude
+    shell: apt-get update && apt-get install python-apt aptitude
+  - name: Do any package upgrades and install required things
+    apt: upgrade=dist pkg=most,zsh,vim,vim-scripts,git,subversion,tmux,multitail,mtr-tiny,curl,dnsutils,sudo
+  - name: Get dotfiles repo
+    git: repo=https://github.com/staticsafe/dotfiles.git dest=~/dotfiles
+  - name: Run envsetup script from dotfiles repo
+    shell: ~/dotfiles/envsetup.sh >> bootstrap.txt
