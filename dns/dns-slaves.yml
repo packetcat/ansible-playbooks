@@ -8,5 +8,5 @@
     notify:
     - reload nameserver daemon
   handlers:
-    - reload nameserver daemon
+    - name: reload nameserver daemon
       action: shell service bind9 reload
