@@ -9,4 +9,4 @@
     - reload nameserver daemon
   handlers:
     - name: reload nameserver daemon
-      action: shell service bind9 reload
+      action: name=bind9 state=reloaded
