@@ -6,9 +6,9 @@
   - name: update dns-infrastructure git repo
     git: repo=git@bitbucket.org:staticsafe/dns-infrastructure.git dest=/etc/namedb/dns-infrastructure update=yes
   - name: ensure permission correctness
-    shell: chown -R bind:bind /etc/namedb/dns-infrastructure
+    file: /etc/namedb/dns-infrastructure owner=bind group=bind state=directory recurse=yes
     notify:
     - reload nameserver daemon
   handlers:
     - name: reload nameserver daemon
-      action: shell service named reload
+      action: service name=named state=reloaded
