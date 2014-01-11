@@ -1,0 +1,12 @@
+---
+- user: root
+  hosts: dns-slaves
+  gather_facts: no
+  tasks:
+  - name: update dns-infrastructure git repo
+    git: repo=git@bitbucket.org:staticsafe/dns-infrastructure.git dest=/etc/bind/dns-infrastructure update=yes
+    notify:
+    - reload nameserver daemon
+  handlers:
+    - reload nameserver daemon
+      action: shell service bind9 reload
