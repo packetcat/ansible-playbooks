@@ -4,7 +4,7 @@
   gather_facts: no
   tasks:
   - name: update dns-infrastructure git repo
-    git: repo=git@bitbucket.org:staticsafe/dns-infrastructure.git dest=/etc/bind/dns-infrastructure update=yes
+    git: repo=git@bitbucket.org:staticsafe/dns-infrastructure.git dest=/etc/bind/dns-infrastructure version=debian-master update=yes
     notify:
     - reload nameserver daemon
   handlers:
