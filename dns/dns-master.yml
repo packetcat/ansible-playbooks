@@ -4,11 +4,9 @@
   gather_facts: no
   tasks:
   - name: update dns-infrastructure git repo
-    git: repo=git@bitbucket.org:staticsafe/dns-infrastructure.git dest=/etc/namedb/dns-infrastructure update=yes
-  - name: ensure permission correctness
-    file: path=/etc/namedb/dns-infrastructure owner=bind group=bind state=directory recurse=yes
+    git: repo=git@bitbucket.org:staticsafe/dns-infrastructure.git dest=/src/dns-infrastructure version=debian-master update=yes
     notify:
     - reload nameserver daemon
   handlers:
     - name: reload nameserver daemon
-      action: service name=named state=reloaded
+      action: service name=bind9 state=reloaded
