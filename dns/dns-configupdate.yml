@@ -1,6 +1,6 @@
 ---
 - user: root
-  hosts: dns-slaves
+  hosts: dnsservers
   gather_facts: no
   tasks:
   - name: update dns-infrastructure git repo
