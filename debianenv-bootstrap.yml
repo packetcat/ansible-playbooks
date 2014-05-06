@@ -8,7 +8,3 @@
     apt: upgrade=dist
   - name: Install required things
     apt: pkg=most,zsh,vim,vim-scripts,git,subversion,tmux,multitail,mtr-tiny,curl,dnsutils,sudo,gnupg,traceroute,htop state=present
-  - name: Get dotfiles repo
-    git: repo=https://github.com/staticsafe/dotfiles.git dest=~/dotfiles
-  - name: Run envsetup script from dotfiles repo
-    shell: ~/dotfiles/envsetup.sh >> bootstrap.txt
