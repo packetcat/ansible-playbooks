@@ -17,9 +17,14 @@
     - restart rsyslog
     - restart cron
   - name: Install required packages
-    apt: pkg=most,zsh,vim,vim-scripts,git,subversion,tmux,multitail,mtr-tiny,curl,dnsutils,sudo,gnupg,traceroute,htop,haveged,python-pip state=present
+    apt: pkg=most,zsh,vim,vim-scripts,git,subversion,tmux,multitail,mtr-tiny,curl,dnsutils,sudo,gnupg,traceroute,htop,haveged,python-pip,unbound state=present
   - name: Remove exim4
     apt: pkg=exim4-daemon-light state=absent
+  - name: Ensure haveged and unbound are started on boot
+    service: name=haveged enabled=yes
+    service: name=unbound enabled=yes
+  - name: use local unbound instance for DNS
+    shell: echo "nameserver ::1" > /etc/resolv.conf
   handlers:
     - name: restart rsyslog
       service: name=rsyslog state=restarted
