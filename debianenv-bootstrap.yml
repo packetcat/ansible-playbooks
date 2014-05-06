@@ -17,7 +17,7 @@
     - restart rsyslog
     - restart cron
   - name: Install required packages
-    apt: pkg=most,zsh,vim,vim-scripts,git,subversion,tmux,multitail,mtr-tiny,curl,dnsutils,sudo,gnupg,traceroute,htop state=present
+    apt: pkg=most,zsh,vim,vim-scripts,git,subversion,tmux,multitail,mtr-tiny,curl,dnsutils,sudo,gnupg,traceroute,htop,haveged state=present
   - name: Remove exim4
     apt: pkg=exim4-daemon-light state=absent
   handlers:
