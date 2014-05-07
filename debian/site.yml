@@ -13,3 +13,10 @@
 
   roles:
     - webservers-nginx
+
+- name: apply configuration to PHP app servers
+  hosts: appservers-php
+  user: root
+
+  roles:
+    - appservers-php
