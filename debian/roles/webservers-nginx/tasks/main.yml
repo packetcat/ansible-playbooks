@@ -1,0 +1,28 @@
+---
+- name: Add Dotdeb repository
+  apt_repository: repo='deb http://packages.dotdeb.org wheezy all' state=present update_cache=yes
+- name: Install nginx package
+  apt: pkg=nginx-full state=present
+- name: Ensure nginx starts on boot
+  service: name=nginx enabled=yes
+- name: Stop nginx for now
+  service: name=nginx state=stopped
+- name: Clean out some default configs
+  file: path=/etc/nginx/sites-enabled/default state=absent
+  file: path=/etc/nginx/sites-available/default state=absent
+- name: Make global nginx conf directory
+  file: path=/etc/nginx/global state=directory
+- name: Copy our nginx.conf over
+  copy: src=nginx.conf dest=/etc/nginx/nginx.conf backup=yes
+- name: Copy our default catch-all virtualhost over and symlink it
+  copy: src=0-catch-all dest=/etc/nginx/sites-available/0-catch-all
+  file: src=/etc/nginx/sites-enabled/0-catch-all dest=/etc/nginx/sites-available/0-catch-all state=link
+- name: Copy over global includes, make catchall dir, and start nginx
+  copy: src=cloudflare.conf dest=/etc/nginx/global/cloudflare.conf
+  copy: src=php-generic.conf dest=/etc/nginx/global/php-generic.conf
+  copy: src=security-generic.conf dest=/etc/nginx/global/security-generic.conf
+  copy: src=wordpress-generic.conf dest=/etc/nginx/global/wordpress-generic.conf
+  copy: src=wordpress-security.conf dest=/etc/nginx/wordpress-security.conf
+  file: path=/srv/www/catch-all state=directory user=www-data group=www-data
+  notify:
+  - start nginx

@@ -6,3 +6,10 @@
 
   roles:
     - common
+
+- name: apply configuration to web servers (nginx)
+  hosts: webservers
+  user: root
+
+  roles:
+    - webservers-nginx
