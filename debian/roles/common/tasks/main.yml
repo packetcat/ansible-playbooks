@@ -22,5 +22,5 @@
 - name: Ensure haveged and unbound are started on boot
   service: name=haveged enabled=yes
   service: name=unbound enabled=yes
-- name: use local unbound instance for DNS
-  shell: echo "nameserver ::1" > /etc/resolv.conf
+- name: use local unbound instance for DNS and Google Public DNS as backup
+  copy: src=resolv.conf dest=/etc/resolv.conf
