@@ -17,7 +17,7 @@
   - restart rsyslog
   - restart cron
 - name: Install required packages
-  apt: pkg={{ items }} state=present
+  apt: pkg={{ item }} state=present
   with_items:
      - most
      - zsh
