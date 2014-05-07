@@ -4,9 +4,9 @@
 - name: Add nginx upstream repository
   apt_repository: repo='deb http://nginx.org/packages/debian/ wheezy nginx' state=present update_cache=yes
 - name: Install nginx package and ensure it starts on boot
-  apt: pkg=nginx state=present enabled=yes
-- name: Stop nginx for now
-  service: name=nginx state=stopped
+  apt: pkg=nginx state=present
+- name: Stop nginx for now and also make it start on boot
+  service: name=nginx state=stopped enabled=yes
 - name: Make nginx related dirs
   file: path={{ item }} state=directory
   with_items:
