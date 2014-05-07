@@ -39,6 +39,7 @@
      - unbound
      - duplicity
      - python-boto
+     - build-essential
 - name: Remove exim4 and consolekit
   apt: pkg={{ item }} state=absent
   with_items:
