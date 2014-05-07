@@ -3,7 +3,7 @@
   apt_key: url=http://nginx.org/keys/nginx_signing.key state=present
 - name: Add nginx upstream repository
   apt_repository: repo='deb http://nginx.org/packages/debian/ wheezy nginx' state=present update_cache=yes
-- name: Install nginx package and ensure it starts on boot
+- name: Install nginx package
   apt: pkg=nginx state=present
 - name: Stop nginx for now and also make it start on boot
   service: name=nginx state=stopped enabled=yes
@@ -11,6 +11,8 @@
   file: path={{ item }} state=directory
   with_items:
      - /etc/nginx/global
+     - /etc/nginx/sites-available
+     - /etc/nginx/sites-enabled
      - /srv/www/catch-all
 - name: Clean out default vhost file in enabled and available dirs
   file: path={{ item }} state=absent
