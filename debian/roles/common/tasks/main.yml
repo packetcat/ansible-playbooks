@@ -9,18 +9,45 @@
   debconf: name=locales question='locales/default_environment_locale' value=en_US.UTF-8 vtype='select'
 - name: Generate locales
   debconf: name=locales question='locales/locales_to_be_generated'  value='en_US.UTF-8 UTF-8' vtype='multiselect'
-- name: Choose timezone area
+- name: Set timezone area
   debconf: name=tzdata question='tzdata/Areas' value='Etc' vtype='select'
+- name: Set timezone
   debconf: name=tzdata question='tzdata/Zones/Etc' value='UTC' vtype='select'
   notify:
   - restart rsyslog
   - restart cron
 - name: Install required packages
-  apt: pkg=most,zsh,vim,vim-scripts,git,subversion,tmux,multitail,mtr-tiny,curl,dnsutils,sudo,gnupg,traceroute,htop,haveged,python-pip,unbound,duplicity,python-boto state=present
+  apt: pkg={{ items }} state=present
+  with_items:
+     - most
+     - zsh
+     - vim
+     - vim-scripts
+     - git
+     - subversion
+     - tmux
+     - multitail
+     - mtr-tiny
+     - curl
+     - dnsutils
+     - sudo
+     - gnupg
+     - traceroute
+     - htop
+     - haveged
+     - python-pip
+     - unbound
+     - duplicity
+     - python-boto
 - name: Remove exim4 and consolekit
-  apt: pkg=exim4-daemon-light,consolekit state=absent
+  apt: pkg={{ item }} state=absent
+  with_items:
+     - exim4-daemon-light
+     - consolekit
 - name: Ensure haveged and unbound are started on boot
-  service: name=haveged enabled=yes
-  service: name=unbound enabled=yes
+  service: name={{ item }} enabled=yes
+  with_items:
+     - haveged
+     - unbound
 - name: use local unbound instance for DNS and Google Public DNS as backup
   copy: src=resolv.conf dest=/etc/resolv.conf
