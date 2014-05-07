@@ -1,4 +1,6 @@
 ---
+- name: Add Dotdeb signing key
+  apt_key: url=http://www.dotdeb.org/dotdeb.gpg state=present
 - name: Add Dotdeb repository
   apt_repository: repo='deb http://packages.dotdeb.org wheezy all' state=present update_cache=yes
 - name: Install nginx package
