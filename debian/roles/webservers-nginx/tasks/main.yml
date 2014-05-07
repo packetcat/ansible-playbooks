@@ -30,6 +30,6 @@
      - { name: 'wordpress-generic.conf', dir: '/etc/nginx/global/wordpress-generic.conf' }
      - { name: 'wordpress-security.conf', dir: '/etc/nginx/global/wordpress-security.conf' }
 - name: Make catch-all vhost root dir
-  file: path=/srv/www/catch-all state=directory user=www-data group=www-data
+  file: path=/srv/www/catch-all state=directory owner=www-data group=www-data
   notify:
   - start nginx
