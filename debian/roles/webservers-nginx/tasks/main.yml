@@ -1,7 +1,7 @@
 ---
 - name: Add nginx upstream repo key
   apt_key: url=http://nginx.org/keys/nginx_signing.key state=present
-- name: Add Dotdeb repository
+- name: Add nginx upstream repository
   apt_repository: repo='deb http://nginx.org/packages/debian/ wheezy nginx' state=present update_cache=yes
 - name: Install nginx package and ensure it starts on boot
   apt: pkg=nginx state=present enabled=yes
