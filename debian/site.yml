@@ -8,7 +8,7 @@
     - common
 
 - name: apply configuration to web servers (nginx)
-  hosts: webservers
+  hosts: webservers-nginx
   user: root
 
   roles:
