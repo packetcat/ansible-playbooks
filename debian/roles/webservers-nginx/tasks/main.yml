@@ -7,22 +7,27 @@
   service: name=nginx enabled=yes
 - name: Stop nginx for now
   service: name=nginx state=stopped
-- name: Clean out some default configs
+- name: Clean out default vhost file in enabled dir
   file: path=/etc/nginx/sites-enabled/default state=absent
+- name: Clean out default vhost file in available dir
   file: path=/etc/nginx/sites-available/default state=absent
 - name: Make global nginx conf directory
   file: path=/etc/nginx/global state=directory
 - name: Copy our nginx.conf over
   copy: src=nginx.conf dest=/etc/nginx/nginx.conf backup=yes
-- name: Copy our default catch-all virtualhost over and symlink it
+- name: Copy our default catch-all vhost over
   copy: src=0-catch-all dest=/etc/nginx/sites-available/0-catch-all
+- name: Symlink the default catch-all vhost
   file: src=/etc/nginx/sites-available/0-catch-all dest=/etc/nginx/sites-enabled/0-catch-all state=link
 - name: Copy over global includes, make catchall dir, and start nginx
-  copy: src=cloudflare.conf dest=/etc/nginx/global/cloudflare.conf
-  copy: src=php-generic.conf dest=/etc/nginx/global/php-generic.conf
-  copy: src=security-generic.conf dest=/etc/nginx/global/security-generic.conf
-  copy: src=wordpress-generic.conf dest=/etc/nginx/global/wordpress-generic.conf
-  copy: src=wordpress-security.conf dest=/etc/nginx/wordpress-security.conf
+  copy: src={{ item.name }}  dest={{ item.dir }}
+  with_items:
+     - { name: 'cloudflare.conf', dir: '/etc/nginx/global/cloudflare.conf' }
+     - { name: 'php-generic.conf', dir: '/etc/nginx/global/php-generic.conf' }
+     - { name: 'security-generic.conf', dir: '/etc/nginx/global/security-generic.conf' }
+     - { name: 'wordpress-generic.conf', dir: '/etc/nginx/global/wordpress-generic.conf' }
+     - { name: 'wordpress-security.conf', dir: '/etc/nginx/global/wordpress-security.conf' }
+- name: Make catch-all vhost root dir
   file: path=/srv/www/catch-all state=directory user=www-data group=www-data
   notify:
   - start nginx
