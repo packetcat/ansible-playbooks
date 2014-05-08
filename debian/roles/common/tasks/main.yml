@@ -42,16 +42,18 @@
      - build-essential
      - vnstat
      - python-dev
+     - ntp
 - name: Remove exim4 and consolekit
   apt: pkg={{ item }} state=absent
   with_items:
      - exim4-daemon-light
      - consolekit
-- name: Ensure haveged, unbound, and vnstat are started on boot
+- name: Ensure haveged, unbound, ntp, and vnstat are started on boot
   service: name={{ item }} enabled=yes
   with_items:
      - haveged
      - unbound
      - vnstat
+     - ntp
 - name: use local unbound instance for DNS and Google Public DNS as backup
   copy: src=resolv.conf dest=/etc/resolv.conf
