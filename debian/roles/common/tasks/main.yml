@@ -41,6 +41,7 @@
      - python-boto
      - build-essential
      - vnstat
+     - python-dev
 - name: Remove exim4 and consolekit
   apt: pkg={{ item }} state=absent
   with_items:
