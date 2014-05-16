@@ -7,12 +7,17 @@
   group: name=uwsgi state=present
 - name: Add uwsgi user
   user: name=uwsgi shell=/sbin/nologin createhome=no group=uwsgi password=$6$Qu5GfWUlAPXh$Ie8Fd9Vzl.PpaFciUbRCI4sIryI6i0rDE29Vf86/WYHgPSWG7x9IIkVU.tG1Mtfq2OM9IeH2IuvOKCcnErMgC1
-- name: Copy over the uwsgi init script
-  copy: src=uwsgi.init dest=/etc/init.d/uwsgi backup=yes
+- name: Copy over the uwsgi init script and logrotate config
+  copy: src={{ item.name }} dest={{ item.dir }} backup=yes
+  with_items:
+     - { name= 'uwsgi.init', dir: '/etc/init.d/uwsgi' }
+     - { name= 'uwsgi.logrotate', dir: '/etc/logrotate.d/uwsgi' }
 - name: Make sure the init script is executable
   file: path=/etc/init.d/uwsgi owner=root group=root mode=0755
 - name: Make configuration directory
   file: path=/etc/uwsgi/apps state=directory
+- name: Make log file with correct permissions
+  file: path=/var/log/uwsgi.log owner=uwsgi group=uwsgi mode=0750
 - name: Make sure uwsgi starts on boot
   service: name=uwsgi enabled=yes
   notify:
