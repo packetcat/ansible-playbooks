@@ -17,7 +17,7 @@
 - name: Make configuration directory
   file: path=/etc/uwsgi/apps state=directory
 - name: Make log file with correct permissions
-  file: path=/var/log/uwsgi.log owner=uwsgi group=uwsgi mode=0750
+  file: path=/var/log/uwsgi.log owner=uwsgi group=uwsgi mode=0750 state=touch
 - name: Make sure uwsgi starts on boot
   service: name=uwsgi enabled=yes
   notify:
