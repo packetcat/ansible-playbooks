@@ -2,7 +2,7 @@
 - name: Install virtualenv
   apt: name=python-virtualenv state=latest
 - name: Install uwsgi from PyPI
-  pip: name=uwsgi
+  pip: name=uWSGI
 - name: Add uwsgi group
   group: name=uwsgi state=present
 - name: Add uwsgi user
