@@ -20,3 +20,10 @@
 
   roles:
     - appservers-php
+
+- name: apply configuration to uwsgi app servers
+  hosts: appservers-uwsgi
+  user: root
+
+  roles:
+    - appservers-uwsgi
