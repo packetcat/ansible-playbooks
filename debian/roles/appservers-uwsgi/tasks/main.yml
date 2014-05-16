@@ -10,8 +10,8 @@
 - name: Copy over the uwsgi init script and logrotate config
   copy: src={{ item.name }} dest={{ item.dir }} backup=yes
   with_items:
-     - { name= 'uwsgi.init', dir: '/etc/init.d/uwsgi' }
-     - { name= 'uwsgi.logrotate', dir: '/etc/logrotate.d/uwsgi' }
+     - { name: 'uwsgi.init', dir: '/etc/init.d/uwsgi' }
+     - { name: 'uwsgi.logrotate', dir: '/etc/logrotate.d/uwsgi' }
 - name: Make sure the init script is executable
   file: path=/etc/init.d/uwsgi owner=root group=root mode=0755
 - name: Make configuration directory
