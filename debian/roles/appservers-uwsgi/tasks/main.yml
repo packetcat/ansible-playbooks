@@ -12,7 +12,7 @@
 - name: Make sure the init script is executable
   file: path=/etc/init.d/uwsgi owner=root group=root mode=0755
 - name: Make configuration directory
-  file: /etc/uwsgi/apps state=directory
+  file: path=/etc/uwsgi/apps state=directory
 - name: Make sure uwsgi starts on boot
   service: name=uwsgi enabled=yes
   notify:
