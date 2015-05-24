@@ -1,0 +1,31 @@
+---
+- name: Install nginx package
+  apt: pkg=nginx state=latest
+- name: Stop nginx for now and also make it start on boot
+  service: name=nginx state=stopped enabled=yes
+- name: Make nginx related dirs
+  file: path={{ item }} state=directory
+  with_items:
+     - /etc/nginx/global
+     - /etc/nginx/sites-available
+     - /etc/nginx/sites-enabled
+     - /srv/www/catch-all
+- name: Clean out default vhost file in enabled and available dirs
+  file: path={{ item }} state=absent
+  with_items:
+     - /etc/nginx/sites-enabled/default
+     - /etc/nginx/sites-available/default
+- name: Copy over all nginx configuration files
+  copy: src={{ item.name }}  dest={{ item.dir }}
+  with_items:
+     - { name: 'nginx.conf', dir: '/etc/nginx/nginx.conf' }
+     - { name: '0-catch-all', dir: '/etc/nginx/sites-available/0-catch-all' }
+     - { name: 'cloudflare.conf', dir: '/etc/nginx/global/cloudflare.conf' }
+     - { name: 'php-generic.conf', dir: '/etc/nginx/global/php-generic.conf' }
+     - { name: 'security-generic.conf', dir: '/etc/nginx/global/security-generic.conf' }
+     - { name: 'wordpress-generic.conf', dir: '/etc/nginx/global/wordpress-generic.conf' }
+     - { name: 'wordpress-security.conf', dir: '/etc/nginx/global/wordpress-security.conf' }
+- name: Symlink the default catch-all vhost
+  file: src=/etc/nginx/sites-available/0-catch-all dest=/etc/nginx/sites-enabled/0-catch-all state=link
+  notify:
+  - start nginx
