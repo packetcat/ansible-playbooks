@@ -1,3 +1,0 @@
----
-- name: start uwsgi
-  service: name=uwsgi state=started
