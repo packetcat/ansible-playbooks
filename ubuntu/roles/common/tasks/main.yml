@@ -43,6 +43,7 @@
      - vnstat
      - python-dev
      - ntp
+	 - letsencrypt
 - name: Remove exim4 and consolekit
   apt: pkg={{ item }} state=absent
   with_items:
