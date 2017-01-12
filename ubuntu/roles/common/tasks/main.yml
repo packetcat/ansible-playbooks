@@ -36,7 +36,6 @@
      - htop
      - haveged
      - python-pip
-     - unbound
      - duplicity
      - python-boto
      - build-essential
@@ -56,5 +55,3 @@
      - unbound
      - vnstat
      - ntp
-- name: use local unbound instance for DNS and Google Public DNS as backup
-  copy: src=resolv.conf dest=/etc/resolv.conf
