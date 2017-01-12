@@ -1,9 +1,0 @@
----
-- name: Install php5-fpm
-  apt: pkg=php5-fpm state=latest
-- name: Stop the php5-fpm daemon for now and ensure it starts on boot
-  service: name=php5-fpm state=stopped enabled=yes
-- name: Copy over the php5-fpm www pool config
-  copy: src=www.conf dest=/etc/php5/fpm/pool.d/www.conf backup=yes
-  notify:
-  - start php5-fpm

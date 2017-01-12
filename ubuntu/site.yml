@@ -6,17 +6,3 @@
 
   roles:
     - common
-
-- name: apply configuration to web servers (nginx)
-  hosts: webservers-nginx
-  user: root
-
-  roles:
-    - webservers-nginx
-
-- name: apply configuration to PHP app servers
-  hosts: appservers-php
-  user: root
-
-  roles:
-    - appservers-php
