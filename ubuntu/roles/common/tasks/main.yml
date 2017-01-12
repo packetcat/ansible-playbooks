@@ -48,10 +48,9 @@
   with_items:
      - exim4-daemon-light
      - consolekit
-- name: Ensure haveged, unbound, ntp, and vnstat are started on boot
+- name: Ensure haveged, ntp, and vnstat are started on boot
   service: name={{ item }} enabled=yes
   with_items:
      - haveged
-     - unbound
      - vnstat
      - ntp
