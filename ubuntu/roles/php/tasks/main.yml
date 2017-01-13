@@ -1,5 +1,5 @@
 ---
 - name: Install php-fpm
   apt: pkg=php-fpm state=latest
-- name: Stop the php-fpm daemon for now and ensure it starts on boot
-  service: name=php7.0-fpm state=stopped enabled=yes
+- name: Start PHP-FPM daemon, and make sure it is started on boot
+  service: name=php7.0-fpm state=started enabled=yes
