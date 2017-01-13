@@ -6,3 +6,10 @@
 
   roles:
     - common
+
+- name: install PHP-FPM to required nodes
+  hosts: php
+  user: root
+  
+  roles:
+    - php
