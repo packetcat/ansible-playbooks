@@ -1,4 +1,4 @@
-----
+---
 - name: Install php-fpm
   apt: pkg=php-fpm state=latest
 - name: Stop the php-fpm daemon for now and ensure it starts on boot
