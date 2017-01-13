@@ -1,0 +1,20 @@
+---
+- name: Install LetsEncrypt client
+  apt: name=letsencrypt state=latest
+
+- name: Generate LetsEncrypt TLS certificates
+  shell: letsencrypt certonly -n -m "letsencrypt@sadiqsaif.ca" --agree-tos --standalone -d {{ item }}
+  with_items:
+     - asininetech.com
+     - entropynet.net
+     - i.asininetech.com
+     - sadiqsaif.ca
+     - staticsafe.ca
+     - twoshadesofbrown.com
+     - wiki.staticsafe.ca
+
+- name: Add a cron job to automatically renew LetsEncrypt certificates
+  copy: src=letsencrypt-renew dest=/etc/cron.daily/letsencrypt-renew mode=0700
+  notify:
+  - restart cron
+
