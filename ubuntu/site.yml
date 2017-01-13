@@ -13,3 +13,21 @@
   
   roles:
     - php
+
+- hosts: webservers
+
+  roles:
+  - role: jdauphant.nginx
+    nginx_user: "www-data"
+    nginx_http_params:
+      - sendfile "on"
+    nginx_configs:
+      gzip:
+        - gzip on
+        - gzip_disable msie6
+        - gzip_types "text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript"
+      upstream:
+        - upstream php { server "unix:/run/php/php7.0-fpm.sock" }
+      ssl:
+        - ssl_protocols TLSv1 TLSv1.1 TLSv1.2
+        - ssl_prefer_server_ciphers on
