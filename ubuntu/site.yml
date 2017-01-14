@@ -29,6 +29,162 @@
     nginx_http_params:
       - sendfile "on"
       - server_names_hash_bucket_size 512
+    nginx_sites:
+      asininetech.com:
+        - listen {{ ansible_default_ipv4.address }}:80
+        - listen {{ ansible_default_ipv4.address }}:443 ssl
+        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name asininetech.com
+        - root "/srv/www/asininetech.com"
+        - index index.php index.html
+        - access_log "/var/log/nginx/asininetech.com.access.log"
+        - error_log "/var/log/nginx/asininetech.com.error.log"
+        - client_max_body_size 10M
+        - ssl_certificate "/etc/letsencrypt/live/asininetech.com/fullchain.pem"
+        - ssl_certificate_key "/etc/letsencrypt/live/asininetech.com/privkey.pem"
+        - ssl_stapling on
+        - resolver 8.8.8.8 valid=300s
+        - add_header Strict-Transport-Security max-age=31536000
+        - location / {
+            try_files $uri $uri/ /index.php?$args;
+          }
+        - rewrite /wp-admin$ $scheme://$host$uri/ permanent;
+        - location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+            expires 24h;
+          }
+        - location ~ \.php$ {
+            try_files $uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            include fastcgi_params;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_pass php;
+          }
+      entropynet.net:
+        - listen {{ ansible_default_ipv4.address }}:80
+        - listen {{ ansible_default_ipv4.address }}:443 ssl
+        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name entropynet.net
+        - root "/srv/www/entropynet.net"
+        - index index.html
+        - access_log "/var/log/nginx/entropynet.net.access.log"
+        - error_log "/var/log/nginx/entropynet.net.error.log"
+        - ssl_certificate "/etc/letsencrypt/live/entropynet.net/fullchain.pem"
+        - ssl_certificate_key "/etc/letsencrypt/live/entropynet.net/privkey.pem"
+        - ssl_stapling on
+        - resolver 8.8.8.8 valid=300s
+        - add_header Strict-Transport-Security max-age=31536000
+      i.asininetech.com:
+        - listen {{ ansible_default_ipv4.address }}:80
+        - listen {{ ansible_default_ipv4.address }}:443 ssl
+        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name i.asininetech.com
+        - root "/home/tenshi/public_html"
+        - index index.html
+        - access_log "/var/log/nginx/i.asininetech.com.access.log"
+        - error_log "/var/log/nginx/i.asininetech.com.error.log"
+        - ssl_certificate "/etc/letsencrypt/live/i.asininetech.com/fullchain.pem"
+        - ssl_certificate_key "/etc/letsencrypt/live/i.asininetech.com/privkey.pem"
+        - ssl_stapling on
+        - resolver 8.8.8.8 valid=300s
+        - location / {
+            autoindex off;
+            autoindex_exact_size off;
+          }
+        - add_header Strict-Transport-Security max-age=31536000
+      sadiqsaif.ca:
+        - listen {{ ansible_default_ipv4.address }}:443 ssl
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name sadiqsaif.ca
+        - root "/srv/www/sadiqsaif.ca"
+        - index index.html
+        - access_log "/var/log/nginx/sadiqsaif.ca.access.log"
+        - error_log "/var/log/nginx/sadiqsaif.ca.error.log"
+        - ssl_certificate "/etc/letsencrypt/live/sadiqsaif.ca/fullchain.pem"
+        - ssl_certificate_key "/etc/letsencrypt/live/sadiqsaif.ca/privkey.pem"
+        - ssl_stapling on
+        - resolver 8.8.8.8 valid=300s
+        - add_header Strict-Transport-Security max-age=31536000
+        - error_page 404 /404.html
+      staticsafe.ca:
+        - listen {{ ansible_default_ipv4.address }}:80
+        - listen {{ ansible_default_ipv4.address }}:443 ssl
+        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name staticsafe.ca
+        - root "/srv/www/staticsafe.ca"
+        - index staticsafe.ca.html
+        - access_log "/var/log/nginx/staticsafe.ca.access.log"
+        - error_log "/var/log/nginx/staticsafe.ca.error.log"
+        - ssl_certificate "/etc/letsencrypt/live/staticsafe.ca/fullchain.pem"
+        - ssl_certificate_key "/etc/letsencrypt/live/staticsafe.ca/privkey.pem"
+        - ssl_stapling on
+        - resolver 8.8.8.8 valid=300s
+        - add_header Strict-Transport-Security max-age=31536000
+      twoshadesofbrown.com:
+        - listen {{ ansible_default_ipv4.address }}:80
+        - listen {{ ansible_default_ipv4.address }}:443 ssl
+        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name asininetech.com
+        - root "/srv/www/twoshadesofbrown.com"
+        - index index.php index.html
+        - access_log "/var/log/nginx/twoshadesofbrown.com.access.log"
+        - error_log "/var/log/nginx/twoshadesofbrown.com.error.log"
+        - client_max_body_size 10M
+        - ssl_certificate "/etc/letsencrypt/live/twoshadesofbrown.com/fullchain.pem"
+        - ssl_certificate_key "/etc/letsencrypt/live/twoshadesofbrown.com/privkey.pem"
+        - ssl_stapling on
+        - resolver 8.8.8.8 valid=300s
+        - add_header Strict-Transport-Security max-age=31536000
+        - location / {
+            try_files $uri $uri/ /index.php?$args;
+          }
+        - rewrite /wp-admin$ $scheme://$host$uri/ permanent;
+        - location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+            expires 24h;
+          }
+        - location ~ \.php$ {
+            try_files $uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            include fastcgi_params;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_pass php;
+          }
+        - rewrite ^/sitemap(-+([a-zA-Z0-9_-]+))?\.xml$ "/index.php?xml_sitemap=params=$2" last
+        - rewrite ^/sitemap(-+([a-zA-Z0-9_-]+))?\.xml\.gz$ "/index.php?xml_sitemap=params=$2;zip=true" last
+        - rewrite ^/sitemap(-+([a-zA-Z0-9_-]+))?\.html$ "/index.php?xml_sitemap=params=$2;html=true" last
+        - rewrite ^/sitemap(-+([a-zA-Z0-9_-]+))?\.html.gz$ "/index.php?xml_sitemap=params=$2;html=true;zip=true" last
+      wiki.staticsafe.ca:
+        - listen {{ ansible_default_ipv4.address }}:80
+        - listen {{ ansible_default_ipv4.address }}:443 ssl
+        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name wiki.staticsafe.ca
+        - root "/srv/www/wiki.staticsafe.ca"
+        - index index.php
+        - access_log "/var/log/nginx/wiki.staticsafe.ca.access.log"
+        - error_log "/var/log/nginx/wiki.staticsafe.ca.error.log"
+        - ssl_certificate "/etc/letsencrypt/live/wiki.staticsafe.ca/fullchain.pem"
+        - ssl_certificate_key "/etc/letsencrypt/live/wiki.staticsafe.ca/privkey.pem"
+        - ssl_stapling on
+        - resolver 8.8.8.8 valid=300s
+        - add_header Strict-Transport-Security max-age=31536000
+        - location / {
+            try_files $uri $uri/ /index.php?$args;
+          }
+        - location ~ \.php$ {
+            try_files $uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            include fastcgi_params;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            fastcgi_pass php;
+            fastcgi_index index.php;
+          }
     nginx_configs:
       gzip:
         - gzip on
