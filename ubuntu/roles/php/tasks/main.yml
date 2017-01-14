@@ -1,4 +1,10 @@
 ---
+- name: Install PHP libraries
+  apt: pkg={{ item }} state=latest
+  with_items:
+     - php-mysql
+     - php-xml
+
 - name: Install php-fpm
   apt: pkg=php-fpm state=latest
 - name: Start PHP-FPM daemon, and make sure it is started on boot
