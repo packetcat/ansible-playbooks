@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-
-letsencrypt renew --pre-hook "systemctl stop nginx" --post-hook "systemctl start nginx"
-
+systemctl stop nginx
+letsencrypt renew
+systemctl start nginx
