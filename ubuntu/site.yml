@@ -128,7 +128,7 @@
         - listen {{ ansible_default_ipv4.address }}:443 ssl
         - listen [{{ ansible_default_ipv6.address }}]:80
         - listen [{{ ansible_default_ipv6.address }}]:443 ssl
-        - server_name asininetech.com
+        - server_name twoshadesofbrown.com
         - root "/srv/www/twoshadesofbrown.com"
         - index index.php index.html
         - access_log "/var/log/nginx/twoshadesofbrown.com.access.log"
