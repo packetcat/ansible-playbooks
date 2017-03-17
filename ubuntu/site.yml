@@ -98,8 +98,6 @@
         - listen {{ ansible_default_ipv4.address }}:443 ssl
         - listen [{{ ansible_default_ipv6.address }}]:443 ssl
         - server_name sadiqsaif.ca
-        - root "/srv/www/sadiqsaif.ca"
-        - index index.html
         - access_log "/var/log/nginx/sadiqsaif.ca.access.log"
         - error_log "/var/log/nginx/sadiqsaif.ca.error.log"
         - ssl_certificate "/etc/letsencrypt/live/sadiqsaif.ca/fullchain.pem"
@@ -107,7 +105,7 @@
         - ssl_stapling on
         - resolver 8.8.8.8 valid=300s
         - add_header Strict-Transport-Security max-age=31536000
-        - error_page 404 /404.html
+        - return 301 "$scheme://sadiqsaif.com$request_uri"
       staticsafe.ca:
         - listen {{ ansible_default_ipv4.address }}:80
         - listen {{ ansible_default_ipv4.address }}:443 ssl
