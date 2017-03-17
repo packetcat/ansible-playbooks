@@ -182,6 +182,20 @@
             fastcgi_pass php;
             fastcgi_index index.php;
           }
+      sadiqsaif.com:
+        - listen {{ ansible_default_ipv4.address }}:443 ssl
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name sadiqsaif.com
+        - root "/srv/www/sadiqsaif.com"
+        - index index.html
+        - access_log "/var/log/nginx/sadiqsaif.com.access.log"
+        - error_log "/var/log/nginx/sadiqsaif.com.error.log"
+        - ssl_certificate "/etc/letsencrypt/live/sadiqsaif.com/fullchain.pem"
+        - ssl_certificate_key "/etc/letsencrypt/live/sadiqsaif.com/privkey.pem"
+        - ssl_stapling on
+        - resolver 8.8.8.8 valid=300s
+        - add_header Strict-Transport-Security max-age=31536000
+        - error_page 404 /404.html
     nginx_configs:
       gzip:
         - gzip on
