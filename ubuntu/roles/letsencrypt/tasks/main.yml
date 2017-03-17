@@ -17,6 +17,7 @@
      - staticsafe.ca
      - twoshadesofbrown.com
      - wiki.staticsafe.ca
+     - sadiqsaif.com
 
 - name: start nginx if we stopped it before
   service: name=nginx state=started
