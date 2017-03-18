@@ -95,7 +95,9 @@
           }
         - add_header Strict-Transport-Security max-age=31536000
       sadiqsaif.ca:
+        - listen {{ ansible_default_ipv4.address }}:80
         - listen {{ ansible_default_ipv4.address }}:443 ssl
+        - listen [{{ ansible_default_ipv6_address }}]:80
         - listen [{{ ansible_default_ipv6.address }}]:443 ssl
         - server_name sadiqsaif.ca
         - access_log "/var/log/nginx/sadiqsaif.ca.access.log"
@@ -181,7 +183,9 @@
             fastcgi_index index.php;
           }
       sadiqsaif.com:
+        - listen {{ ansible_default_ipv4.address }}:80
         - listen {{ ansible_default_ipv4.address }}:443 ssl
+        - listen [{{ ansible_default_ipv6.address }}]:80
         - listen [{{ ansible_default_ipv6.address }}]:443 ssl
         - server_name sadiqsaif.com
         - root "/srv/www/sadiqsaif.com"
