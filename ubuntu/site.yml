@@ -114,8 +114,6 @@
         - listen [{{ ansible_default_ipv6.address }}]:80
         - listen [{{ ansible_default_ipv6.address }}]:443 ssl
         - server_name staticsafe.ca
-        - root "/srv/www/staticsafe.ca"
-        - index staticsafe.ca.html
         - access_log "/var/log/nginx/staticsafe.ca.access.log"
         - error_log "/var/log/nginx/staticsafe.ca.error.log"
         - ssl_certificate "/etc/letsencrypt/live/staticsafe.ca/fullchain.pem"
@@ -123,6 +121,7 @@
         - ssl_stapling on
         - resolver 8.8.8.8 valid=300s
         - add_header Strict-Transport-Security max-age=31536000
+        - return 301 "$scheme://sadiqsaif.com$request_uri"
       twoshadesofbrown.com:
         - listen {{ ansible_default_ipv4.address }}:80
         - listen {{ ansible_default_ipv4.address }}:443 ssl
