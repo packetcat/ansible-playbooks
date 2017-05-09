@@ -10,14 +10,14 @@
 - name: install PHP-FPM to required nodes
   hosts: php
   user: root
-  
+
   roles:
     - php
 
 - name: Generate LE certs on required servers
   hosts: webservers
   user: root
-  
+
   roles:
     - letsencrypt
 
@@ -30,11 +30,14 @@
       - sendfile "on"
       - server_names_hash_bucket_size 512
     nginx_sites:
-      asininetech.com:
+      asininetech.com.http:
         - listen {{ ansible_default_ipv4.address }}:80
-        - listen {{ ansible_default_ipv4.address }}:443 ssl
         - listen [{{ ansible_default_ipv6.address }}]:80
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name asininetech.com
+        - return 301 "https://$host$request_uri"
+      asininetech.com.https:
+        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
         - server_name asininetech.com
         - root "/srv/www/asininetech.com"
         - index index.php index.html
@@ -60,11 +63,14 @@
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             fastcgi_pass php;
           }
-      entropynet.net:
+      entropynet.net.http:
         - listen {{ ansible_default_ipv4.address }}:80
-        - listen {{ ansible_default_ipv4.address }}:443 ssl
         - listen [{{ ansible_default_ipv6.address }}]:80
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name entropynet.net
+        - return 301 "https://$host$request_uri"
+      entropynet.net.https:
+        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
         - server_name entropynet.net
         - root "/srv/www/entropynet.net"
         - index index.html
@@ -75,11 +81,14 @@
         - ssl_stapling on
         - resolver 8.8.8.8 valid=300s
         - add_header Strict-Transport-Security max-age=31536000
-      i.asininetech.com:
+      i.asininetech.com.http:
         - listen {{ ansible_default_ipv4.address }}:80
-        - listen {{ ansible_default_ipv4.address }}:443 ssl
         - listen [{{ ansible_default_ipv6.address }}]:80
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name i.asininetech.com
+        - return 301 "https://$host$request_uri"
+      i.asininetech.com.https:
+        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
         - server_name i.asininetech.com
         - root "/home/tenshi/public_html"
         - index index.html
@@ -107,7 +116,7 @@
         - ssl_stapling on
         - resolver 8.8.8.8 valid=300s
         - add_header Strict-Transport-Security max-age=31536000
-        - return 301 "$scheme://sadiqsaif.com$request_uri"
+        - return 301 "https://sadiqsaif.com$request_uri"
       staticsafe.ca:
         - listen {{ ansible_default_ipv4.address }}:80
         - listen {{ ansible_default_ipv4.address }}:443 ssl
@@ -121,12 +130,15 @@
         - ssl_stapling on
         - resolver 8.8.8.8 valid=300s
         - add_header Strict-Transport-Security max-age=31536000
-        - return 301 "$scheme://sadiqsaif.com$request_uri"
-      twoshadesofbrown.com:
+        - return 301 "https://sadiqsaif.com$request_uri"
+      twoshadesofbrown.com.http:
         - listen {{ ansible_default_ipv4.address }}:80
-        - listen {{ ansible_default_ipv4.address }}:443 ssl
         - listen [{{ ansible_default_ipv6.address }}]:80
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name twoshadesofbrown.com
+        - return 301 "https://$host$request_uri"
+      twoshadesofbrown.com.https:
+        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
         - server_name twoshadesofbrown.com
         - root "/srv/www/twoshadesofbrown.com"
         - index index.php index.html
@@ -152,11 +164,14 @@
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             fastcgi_pass php;
           }
-      wiki.staticsafe.ca:
+      wiki.staticsafe.ca.http:
         - listen {{ ansible_default_ipv4.address }}:80
-        - listen {{ ansible_default_ipv4.address }}:443 ssl
         - listen [{{ ansible_default_ipv6.address }}]:80
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name wiki.staticsafe.ca
+        - return 301 "https://$host$request_uri"
+      wiki.staticsafe.ca.https:
+        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
         - server_name wiki.staticsafe.ca
         - root "/srv/www/wiki.staticsafe.ca"
         - index index.php
@@ -181,11 +196,14 @@
             fastcgi_pass php;
             fastcgi_index index.php;
           }
-      sadiqsaif.com:
+      sadiqsaif.com.http:
         - listen {{ ansible_default_ipv4.address }}:80
-        - listen {{ ansible_default_ipv4.address }}:443 ssl
         - listen [{{ ansible_default_ipv6.address }}]:80
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - server_name sadiqsaif.com
+        - return 301 "https://$host$request_uri"
+      sadiqsaif.com.https:
+        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
+        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
         - server_name sadiqsaif.com
         - root "/srv/www/sadiqsaif.com"
         - index index.html
