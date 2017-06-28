@@ -73,6 +73,7 @@
         - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
         - server_name entropynet.net
         - root "/srv/www/entropynet.net"
+        - error_page 404.html 
         - index index.html
         - access_log "/var/log/nginx/entropynet.net.access.log"
         - error_log "/var/log/nginx/entropynet.net.error.log"
