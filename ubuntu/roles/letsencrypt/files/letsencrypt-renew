@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-systemctl stop nginx
 letsencrypt renew
-systemctl start nginx
+service nginx reload
