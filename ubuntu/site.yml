@@ -14,12 +14,12 @@
   roles:
     - php
 
-- name: Generate LE certs on required servers
-  hosts: webservers
-  user: root
+#- name: Generate LE certs on required servers
+#  hosts: webservers
+#  user: root
 
-  roles:
-    - letsencrypt
+#  roles:
+#    - letsencrypt
 
 - hosts: webservers
 
