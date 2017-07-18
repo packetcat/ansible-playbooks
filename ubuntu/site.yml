@@ -224,7 +224,7 @@
       netdata.asininetech.net.https:
         - listen {{ ansible_default_ipv4.address }}:443 ssl http2
         - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
-        - server_name sadiqsaif.com
+        - server_name netdata.asininetech.net
         - root "/srv/www/netdata.asininetech.net"
         - access_log "/var/log/nginx/netdata.asininetech.net.access.log"
         - error_log "/var/log/nginx/netdata.asininetech.net.error.log"
