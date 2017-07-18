@@ -226,7 +226,7 @@
         - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
         - server_name netdata.asininetech.net
         - root "/srv/www/netdata.asininetech.net"
-        - access_log "/var/log/nginx/netdata.asininetech.net.access.log"
+        - access_log off
         - error_log "/var/log/nginx/netdata.asininetech.net.error.log"
         - ssl_certificate "/etc/letsencrypt/live/netdata.asininetech.net/fullchain.pem"
         - ssl_certificate_key "/etc/letsencrypt/live/netdata.asininetech.net/privkey.pem"
