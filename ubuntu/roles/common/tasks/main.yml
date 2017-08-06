@@ -24,7 +24,6 @@
      - vim
      - vim-scripts
      - git
-     - subversion
      - tmux
      - multitail
      - mtr-tiny
@@ -43,6 +42,7 @@
      - python-dev
      - ntp
      - letsencrypt
+     - unattended-upgrades
 - name: Remove exim4 and consolekit
   apt: pkg={{ item }} state=absent
   with_items:
