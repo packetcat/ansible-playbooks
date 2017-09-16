@@ -220,6 +220,8 @@
         - listen {{ ansible_default_ipv4.address }}:80
         - listen [{{ ansible_default_ipv6.address }}]:80
         - server_name netdata.asininetech.net
+        - root "srv/www/netdata.asininetech.net"
+        - location /.well-known/acme-challenge/ { allow all; }
         - return 301 "https://$host$request_uri"
       netdata.asininetech.net.https:
         - listen {{ ansible_default_ipv4.address }}:443 ssl http2
@@ -233,8 +235,6 @@
         - ssl_stapling on
         - resolver 8.8.8.8 valid=300s
         - add_header Strict-Transport-Security max-age=31536000
-        - location /.well-known/acme-challenge/ {
-            root /srv/www/netdata.asininetech.net;
         - location / {
             proxy_set_header X-Forwarded-Host $host;
             proxy_set_header X-Forwarded-Server $host;
