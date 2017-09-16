@@ -220,7 +220,6 @@
         - listen {{ ansible_default_ipv4.address }}:80
         - listen [{{ ansible_default_ipv6.address }}]:80
         - server_name netdata.asininetech.net
-        - location /.well-known/acme-challenge/ { allow all; }
         - return 301 "https://$host$request_uri"
       netdata.asininetech.net.https:
         - listen {{ ansible_default_ipv4.address }}:443 ssl http2
