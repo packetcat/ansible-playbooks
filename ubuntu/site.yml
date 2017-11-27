@@ -15,7 +15,7 @@
     - php
 
 - name: install Icinga 2 for client usage
-  host: icinga-clients
+  hosts: icinga-clients
   user: root
 
   role:
