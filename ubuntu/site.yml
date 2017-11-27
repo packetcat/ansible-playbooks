@@ -14,6 +14,13 @@
   roles:
     - php
 
+- name: install Icinga 2 for client usage
+  host: icinga-clients
+  user: root
+
+  role:
+    - icinga-client
+
 #- name: Generate LE certs on required servers
 #  hosts: webservers
 #  user: root
@@ -73,7 +80,7 @@
         - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
         - server_name entropynet.net
         - root "/srv/www/entropynet.net"
-        - error_page 404 /404.html 
+        - error_page 404 /404.html
         - index index.html
         - access_log "/var/log/nginx/entropynet.net.access.log"
         - error_log "/var/log/nginx/entropynet.net.error.log"
