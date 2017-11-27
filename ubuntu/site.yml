@@ -18,7 +18,7 @@
   hosts: icinga-clients
   user: root
 
-  role:
+  roles:
     - icinga-client
 
 #- name: Generate LE certs on required servers
