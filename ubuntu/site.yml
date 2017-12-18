@@ -266,7 +266,6 @@
         - gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript
       upstream:
         - upstream php { server unix:/run/php/php7.0-fpm.sock; }
-        - upstream netdata { server 127.0.0.1:19999; keepalive 64; }
       ssl:
         - ssl_protocols TLSv1.2
         - ssl_prefer_server_ciphers on
