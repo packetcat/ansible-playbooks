@@ -38,13 +38,13 @@
       - server_names_hash_bucket_size 512
     nginx_sites:
       asininetech.com.http:
-        - listen {{ ansible_default_ipv4.address }}:80
-        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen 80
+        - listen [::]:80
         - server_name asininetech.com
         - return 301 "https://$host$request_uri"
       asininetech.com.https:
-        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
+        - listen 443 ssl http2
+        - listen [::]:443 ssl http2
         - server_name asininetech.com
         - root "/srv/www/asininetech.com"
         - index index.php index.html
@@ -71,13 +71,13 @@
             fastcgi_pass php;
           }
       entropynet.net.http:
-        - listen {{ ansible_default_ipv4.address }}:80
-        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen 80
+        - listen [::]:80
         - server_name entropynet.net
         - return 301 "https://$host$request_uri"
       entropynet.net.https:
-        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
+        - listen 443 ssl http2
+        - listen [::]:443 ssl http2
         - server_name entropynet.net
         - root "/srv/www/entropynet.net"
         - error_page 404 /404.html
@@ -90,13 +90,13 @@
         - resolver 8.8.8.8 valid=300s
         - add_header Strict-Transport-Security max-age=31536000
       i.asininetech.com.http:
-        - listen {{ ansible_default_ipv4.address }}:80
-        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen 80
+        - listen [::]:80
         - server_name i.asininetech.com
         - return 301 "https://$host$request_uri"
       i.asininetech.com.https:
-        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
+        - listen 443 ssl http2
+        - listen [::]:443 ssl http2
         - server_name i.asininetech.com
         - root "/home/tenshi/public_html"
         - index index.html
@@ -112,10 +112,10 @@
           }
         - add_header Strict-Transport-Security max-age=31536000
       sadiqsaif.ca:
-        - listen {{ ansible_default_ipv4.address }}:80
-        - listen {{ ansible_default_ipv4.address }}:443 ssl
-        - listen [{{ ansible_default_ipv6.address }}]:80
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - listen 80
+        - listen 443 ssl
+        - listen [::]:80
+        - listen [::]:443 ssl
         - server_name sadiqsaif.ca
         - access_log "/var/log/nginx/sadiqsaif.ca.access.log"
         - error_log "/var/log/nginx/sadiqsaif.ca.error.log"
@@ -126,10 +126,10 @@
         - add_header Strict-Transport-Security max-age=31536000
         - return 301 "https://sadiqsaif.com$request_uri"
       staticsafe.ca:
-        - listen {{ ansible_default_ipv4.address }}:80
-        - listen {{ ansible_default_ipv4.address }}:443 ssl
-        - listen [{{ ansible_default_ipv6.address }}]:80
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl
+        - listen 80
+        - listen 443 ssl
+        - listen [::]:80
+        - listen [::]:443 ssl
         - server_name staticsafe.ca
         - access_log "/var/log/nginx/staticsafe.ca.access.log"
         - error_log "/var/log/nginx/staticsafe.ca.error.log"
@@ -140,13 +140,13 @@
         - add_header Strict-Transport-Security max-age=31536000
         - return 301 "https://sadiqsaif.com$request_uri"
       twoshadesofbrown.com.http:
-        - listen {{ ansible_default_ipv4.address }}:80
-        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen 80
+        - listen [::]:80
         - server_name twoshadesofbrown.com
         - return 301 "https://$host$request_uri"
       twoshadesofbrown.com.https:
-        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
+        - listen 443 ssl http2
+        - listen [::]:443 ssl http2
         - server_name twoshadesofbrown.com
         - root "/srv/www/twoshadesofbrown.com"
         - index index.php index.html
@@ -173,13 +173,13 @@
             fastcgi_pass php;
           }
       wiki.staticsafe.ca.http:
-        - listen {{ ansible_default_ipv4.address }}:80
-        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen 80
+        - listen [::]:80
         - server_name wiki.staticsafe.ca
         - return 301 "https://$host$request_uri"
       wiki.staticsafe.ca.https:
-        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
+        - listen 443 ssl http2
+        - listen [::]:443 ssl http2
         - server_name wiki.staticsafe.ca
         - root "/srv/www/wiki.staticsafe.ca"
         - index index.php
@@ -205,13 +205,13 @@
             fastcgi_index index.php;
           }
       sadiqsaif.com.http:
-        - listen {{ ansible_default_ipv4.address }}:80
-        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen 80
+        - listen [::]:80
         - server_name sadiqsaif.com
         - return 301 "https://$host$request_uri"
       sadiqsaif.com.https:
-        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
+        - listen 443 ssl http2
+        - listen [::]:443 ssl http2
         - server_name sadiqsaif.com
         - root "/srv/www/sadiqsaif.com"
         - index index.html
@@ -224,13 +224,13 @@
         - add_header Strict-Transport-Security max-age=31536000
         - error_page 404 /404.html
       ttrss.sadiqsaif.com.http:
-        - listen {{ ansible_default_ipv4.address }}:80
-        - listen [{{ ansible_default_ipv6.address }}]:80
+        - listen 80
+        - listen [::]:80
         - server_name ttrss.sadiqsaif.com
         - return 301 "https://$host$request_uri"
       ttrss.sadiqsaif.com.https:
-        - listen {{ ansible_default_ipv4.address }}:443 ssl http2
-        - listen [{{ ansible_default_ipv6.address }}]:443 ssl http2
+        - listen 443 ssl http2
+        - listen [::]:443 ssl http2
         - server_name ttrss.sadiqsaif.com
         - root "/srv/www/ttrss.sadiqsaif.com"
         - index index.php index.html
