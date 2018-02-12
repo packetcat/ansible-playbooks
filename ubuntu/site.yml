@@ -54,7 +54,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/asininetech.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/asininetech.com.pem"
         - ssl_stapling on
-        - resolver 8.8.8.8 valid=300s
+        - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
         - location / {
             try_files $uri $uri/ /index.php?$args;
@@ -87,7 +87,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/entropynet.net.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/entropynet.net.pem"
         - ssl_stapling on
-        - resolver 8.8.8.8 valid=300s
+        - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
       i.asininetech.com.http:
         - listen *:80
@@ -105,7 +105,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/i.asininetech.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/i.asininetech.com.pem"
         - ssl_stapling on
-        - resolver 8.8.8.8 valid=300s
+        - resolver [::1] valid=300s
         - location / {
             autoindex off;
             autoindex_exact_size off;
@@ -122,7 +122,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/sadiqsaif.ca.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/sadiqsaif.ca.pem"
         - ssl_stapling on
-        - resolver 8.8.8.8 valid=300s
+        - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
         - return 301 "https://sadiqsaif.com$request_uri"
       staticsafe.ca:
@@ -136,7 +136,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/staticsafe.ca.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/staticsafe.ca.pem"
         - ssl_stapling on
-        - resolver 8.8.8.8 valid=300s
+        - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
         - return 301 "https://sadiqsaif.com$request_uri"
       twoshadesofbrown.com.http:
@@ -156,7 +156,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/twoshadesofbrown.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/twoshadesofbrown.com.pem"
         - ssl_stapling on
-        - resolver 8.8.8.8 valid=300s
+        - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
         - location / {
             try_files $uri $uri/ /index.php?$args;
@@ -188,7 +188,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/wiki.staticsafe.ca.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/wiki.staticsafe.ca.pem"
         - ssl_stapling on
-        - resolver 8.8.8.8 valid=300s
+        - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
         - location ~ /(data|conf|bin|inc)/ {
             deny all;
@@ -220,7 +220,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/sadiqsaif.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/sadiqsaif.com.pem"
         - ssl_stapling on
-        - resolver 8.8.8.8 valid=300s
+        - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
         - error_page 404 /404.html
       ttrss.sadiqsaif.com.http:
@@ -240,7 +240,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/ttrss.sadiqsaif.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/ttrss.sadiqsaif.com.pem"
         - ssl_stapling on
-        - resolver 8.8.8.8 valid=300s
+        - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
         - location /cache {
             deny all;
