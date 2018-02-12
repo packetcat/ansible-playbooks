@@ -40,7 +40,7 @@
      - build-essential
      - vnstat
      - python-dev
-     - ntp
+     - chrony
      - letsencrypt
      - unattended-upgrades
 - name: Remove exim4 and consolekit
