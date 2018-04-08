@@ -50,7 +50,6 @@
             proxy_cache_valid 200 7d;
             proxy_cache_use_stale error timeout updating http_500 http_502 http_503 http_504;
             add_header X-Cached $upstream_cache_status;
-            # these are added here because nginx doesn't inherit if there is already a add_header - https://nginx.org/en/docs/http/ngx_http_headers_module.html
             add_header Strict-Transport-Security max-age=31536000; includeSubDomains;
             add_header Referrer-Policy no-referrer, strict-origin-when-cross-origin;
             tcp_nodelay on;
