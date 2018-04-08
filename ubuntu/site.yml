@@ -21,13 +21,6 @@
   roles:
     - icinga-client
 
-#- name: Generate LE certs on required servers
-#  hosts: webservers
-#  user: root
-
-#  roles:
-#    - letsencrypt
-
 - hosts: webservers
 
   roles:
