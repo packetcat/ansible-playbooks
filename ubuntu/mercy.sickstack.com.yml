@@ -8,7 +8,7 @@
       - sendfile "on"
       - server_names_hash_bucket_size 512
     nginx_sites:
-      mastodon.zombocloud.com.http:
+      git.sickstack.com.http:
         - listen *:80
         - listen [::]:80
         - server_name git.sickstack.com
@@ -16,7 +16,7 @@
             allow all;
           }
         - return 301 "https://$host$request_uri"
-      mastodon.zombocloud.com.https:
+      git.sickstack.com.https:
         - listen *:443 ssl http2
         - listen [::]:443 ssl http2
         - server_name git.sickstack.com
