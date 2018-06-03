@@ -4,7 +4,7 @@
 - name: Add Icinga package repository key
   apt_key: url="https://packages.icinga.com/icinga.key" state=present
 - name: Add Icinga apt repository
-  apt_repository: repo="deb https://packages.icinga.com/ubuntu icinga-xenial main" state=present
+  apt_repository: repo="deb https://packages.icinga.com/ubuntu icinga-{{ ansible_distribution_release }} main" state=present
 - name: Update apt cache and install Icinga packages
   apt: name={{ item }} state=latest update_cache=yes
   with_items:
