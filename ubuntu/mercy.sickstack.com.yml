@@ -28,6 +28,26 @@
         - location / {
             proxy_pass http://localhost:3000;
           }
+      cryptpad.sickstack.com.http:
+        - listen *:80
+        - listen [::]:80
+        - server_name cryptpad.sickstack.com
+        - location /.well-known/acme-challenge/ {
+            allow all;
+          }
+        - return 301 "https://$host$request_uri"
+      cryptpad.sickstack.com.https:
+        - listen *:443 ssl http2
+        - listen [::]:443 ssl http2
+        - server_name cryptpad.sickstack.com
+        - access_log "/var/log/nginx/cryptpad.sickstack.com.access.log"
+        - error_log "/var/log/nginx/cryptpad.sickstack.com.error.log"
+        - ssl_certificate "/etc/ssl/letsencrypt/cryptpad.sickstack.com.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/cryptpad.sickstack.com.pem"
+        - add_header Strict-Transport-Security max-age=31536000
+        - location / {
+            proxy_pass http://localhost:3001;
+          }
 
     nginx_configs:
       gzip:
