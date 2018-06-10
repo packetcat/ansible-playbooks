@@ -8,4 +8,8 @@
 - name: Install php-fpm
   apt: pkg=php-fpm state=latest
 - name: Start PHP-FPM daemon, and make sure it is started on boot
+  when: ansible_distribution_release == 'xenial'
   service: name=php7.0-fpm state=started enabled=yes
+- name: Start PHP-FPM daemon, and make sure it is started on boot
+  when: ansible_distribution_release == 'bionic'
+  service: name=php7.2-fpm state=started enabled=yes
