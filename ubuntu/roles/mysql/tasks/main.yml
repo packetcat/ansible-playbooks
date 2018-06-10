@@ -1,0 +1,5 @@
+---
+- name: Install MySQL server
+  apt: pkg=mysql-server state=latest
+- name: Start MySQL daemon and ensure it starts on boot
+  service: name=mysql state=started enabled=yes
