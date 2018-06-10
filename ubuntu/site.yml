@@ -27,3 +27,12 @@
 
   roles:
     - icinga-client
+
+- name: install LEMP stack to required nodes
+  hosts: lemp-servers
+  user: root
+
+  roles:
+    - jdauphant.nginx
+    - php
+    - mysql
