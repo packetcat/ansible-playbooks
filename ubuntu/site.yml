@@ -14,6 +14,13 @@
   roles:
     - php
 
+- name: install MySQL server to required nodes
+  hosts: mysql-servers
+  user: root
+
+  roles:
+    - mysql
+
 - name: install Icinga 2 for client usage
   hosts: icinga-clients
   user: root
