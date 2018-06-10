@@ -4,6 +4,7 @@
   with_items:
      - php-mysql
      - php-xml
+     - php-gd
 
 - name: Install php-fpm
   apt: pkg=php-fpm state=latest
