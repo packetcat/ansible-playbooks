@@ -9,9 +9,13 @@
   rpm_key:
     state: present
     key: https://packages.icinga.com/icinga.key
-- name: Install Icinga2
+- name: Install Icinga2 repository
   yum:
     name: https://packages.icinga.com/epel/icinga-rpm-release-7-latest.noarch.rpm
+    state: latest
+- name: Install Icinga2 packages
+  yum:
+    name: icinga2
     state: latest
 - name: Ensure that icinga2 systemd service is enabled
   systemd:
