@@ -1,0 +1,19 @@
+---
+# This role installs Icinga 2 and the plugins required on a Icinga client nodes
+
+- name: Make sure EPEL repository is enabled
+  yum:
+    name: epel-release
+    state: latest
+- name: Add Icinga2 repository key
+  rpm_key:
+    state: present
+    key: https://packages.icinga.com/icinga.key
+- name: Install Icinga2
+  yum:
+    name: https://packages.icinga.com/epel/icinga-rpm-release-7-latest.noarch.rpm
+    state: latest
+- name: Ensure that icinga2 systemd service is enabled
+  systemd:
+    name: icinga2
+    enabled: yes
