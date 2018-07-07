@@ -19,10 +19,7 @@
   vars:
     packages:
       - icinga2
-      - nagios-plugins-load
-      - nagios-plugins-swap
-      - nagios-plugins-procs
-      - nagios-plugins-users
+      - nagios-plugins-all
 - name: Ensure that icinga2 systemd service is enabled
   systemd:
     name: icinga2
