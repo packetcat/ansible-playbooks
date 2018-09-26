@@ -1,0 +1,12 @@
+---
+# This role turns off the MOTD news in Ubuntu 18.04
+
+- name: Copy motd-news file
+  when: ansible_distribution_release == 'bionic'
+  copy:
+    src: motd-news
+    dest: /etc/default/motd-news
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes

@@ -36,3 +36,10 @@
     - jdauphant.nginx
     - php
     - mysql
+
+- name: Turn off MOTD news on Ubuntu 18.04 hosts
+  hosts: myubuntuservers
+  user: root
+
+  roles:
+    - turn-off-motd-news
