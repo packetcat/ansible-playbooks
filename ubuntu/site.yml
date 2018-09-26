@@ -6,6 +6,7 @@
 
   roles:
     - common
+    - turn-off-motd-news
 
 - name: install PHP-FPM to required nodes
   hosts: php
