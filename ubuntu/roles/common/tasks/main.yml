@@ -41,7 +41,6 @@
      - vnstat
      - python-dev
      - chrony
-     - letsencrypt
      - unattended-upgrades
 - name: Remove exim4 and consolekit
   apt: pkg={{ item }} state=absent
