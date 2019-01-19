@@ -42,11 +42,13 @@
      - python-dev
      - chrony
      - unattended-upgrades
-- name: Remove exim4 and consolekit
+- name: Remove packages we do not need
   apt: pkg={{ item }} state=absent
   with_items:
      - exim4-daemon-light
      - consolekit
+     - snapd
+     - lxcfs
 - name: Ensure haveged, ntp, and vnstat are started on boot
   service: name={{ item }} enabled=yes
   with_items:
