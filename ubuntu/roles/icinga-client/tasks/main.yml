@@ -6,10 +6,11 @@
 - name: Add Icinga apt repository
   apt_repository: repo="deb https://packages.icinga.com/ubuntu icinga-{{ ansible_distribution_release }} main" state=present
 - name: Update apt cache and install Icinga packages
-  apt: name={{ item }} state=latest update_cache=yes
-  with_items:
-     - icinga2
-     - monitoring-plugins
+  apt: name={{ packages }} state=latest update_cache=yes
+  vars:
+    packages:
+      - icinga2
+      - monitoring-plugins
 - name: Ensure icinga2 systemd folder exists
   file:
     path: /etc/systemd/system/icinga2.service.d/
