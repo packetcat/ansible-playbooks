@@ -20,7 +20,16 @@
     packages:
       - icinga2
       - nagios-plugins-all
+- name: Ensure icinga2 systemd folder exists
+  file:
+    path: /etc/systemd/system/icinga2.service.d/
+    state: directory
+- name: Copy custom icinga2 systemd service file modifications
+  copy:
+    src: restart.conf
+    dest: /etc/systemd/system/icinga2.service.d/restart.conf
 - name: Ensure that icinga2 systemd service is enabled
   systemd:
     name: icinga2
     enabled: yes
+    daemon_reload: yes
