@@ -3,6 +3,8 @@
 
 - name: Install netdata
   shell: bash <(curl -Ss https://my-netdata.io/kickstart.sh) --dont-wait --dont-start-it
+  args:
+    executable: /bin/bash
 - name: Copy main netdata config file
   copy:
     src: netdata.conf
