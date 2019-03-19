@@ -1,0 +1,20 @@
+---
+# This role installs netdata on a node and configures it to send data to the collector
+
+- name: Install netdata
+  shell: bash <(curl -Ss https://my-netdata.io/kickstart.sh) --dont-wait --dont-start-it
+- name: Copy main netdata config file
+  copy:
+    src: netdata.conf
+    dest: /etc/netdata/netdata.conf
+    backup: yes
+- name: Copy netdata stream config
+  copy:
+    src: stream.conf
+    dest: /etc/netdata/stream.conf
+    backup: yes
+- name: Start netdata service and ensure it starts on boot
+  systemd:
+    name: netdata
+    state: started
+    enabled: yes
