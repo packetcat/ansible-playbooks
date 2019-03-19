@@ -18,5 +18,5 @@
 - name: Start netdata service and ensure it starts on boot
   systemd:
     name: netdata
-    state: started
+    state: restarted
     enabled: yes
