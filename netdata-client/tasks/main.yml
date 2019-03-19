@@ -20,3 +20,4 @@
     name: netdata
     state: restarted
     enabled: yes
+    masked: no
