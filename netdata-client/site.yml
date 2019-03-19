@@ -1,0 +1,6 @@
+- name: Install netdata client
+  hosts: netdata-client
+  user: root
+
+  roles:
+    - netdata-client
