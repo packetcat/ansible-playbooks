@@ -1,0 +1,16 @@
+---
+- hosts: prometheus
+  roles:
+  - cloudalchemy.prometheus
+  vars:
+    prometheus_scrape_configs:
+      - job_name: "prometheus"    # Custom scrape job, here using `static_config`
+        metrics_path: "/metrics"
+        static_configs:
+          - targets:
+              - "localhost:9090"
+      - job_name: "netdata-scrape"
+        metrics_path: "/api/v1/allmetrics"
+        static_configs:
+          - targets:
+              - "netdata.internal.sickstack.com:19999"
