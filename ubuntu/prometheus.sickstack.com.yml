@@ -11,6 +11,8 @@
               - "localhost:9090"
       - job_name: "netdata-scrape"
         metrics_path: "/api/v1/allmetrics"
+        format: "prometheus_all_hosts"
+        honor_labels: true
         static_configs:
           - targets:
               - "netdata.internal.sickstack.com:19999"
