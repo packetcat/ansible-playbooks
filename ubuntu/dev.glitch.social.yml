@@ -88,7 +88,7 @@
       proxycache:
         - proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=CACHE:10m inactive=7d max_size=1g
       ssl:
-        - ssl_protocols TLSv1.2
+        - ssl_protocols TLSv1.2 TLSv1.3
         - ssl_dhparam "/etc/nginx/dhparams.pem"
         - ssl_session_timeout 1d
         - ssl_session_cache shared:SSL:50m
