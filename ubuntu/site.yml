@@ -7,6 +7,7 @@
   roles:
     - common
     - turn-off-motd-news
+    - apt-maintenance
 
 - name: install PHP-FPM to required nodes
   hosts: php
@@ -44,3 +45,10 @@
 
   roles:
     - turn-off-motd-news
+
+- name: Add apt-maintenance cron job
+  hosts: myubuntunodes
+  user: root
+
+  roles:
+    - apt-maintenance
