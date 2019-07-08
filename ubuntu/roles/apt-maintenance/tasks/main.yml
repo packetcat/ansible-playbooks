@@ -1,0 +1,18 @@
+---
+# This task adds a daily cron job to do apt related maintenance
+# Update repos, update packages, autoremove packages
+
+- name: Copy cron script
+  copy:
+    src: apt-maintenance.sh
+    dest: /etc/cron.daily/apt-maintenance.sh
+    owner: root
+    group: root
+    mode: 0744
+    backup: yes
+
+- name: Restart cron daemon
+  service:
+    name: cron
+    state: restarted
+    
