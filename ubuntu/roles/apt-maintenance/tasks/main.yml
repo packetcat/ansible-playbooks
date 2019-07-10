@@ -9,10 +9,9 @@
     owner: root
     group: root
     mode: 0744
-    backup: yes
+    backup: no
 
 - name: Restart cron daemon
   service:
     name: cron
     state: restarted
-    
