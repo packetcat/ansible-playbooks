@@ -8,7 +8,7 @@
     dest: /etc/cron.daily/apt-maintenance.sh
     owner: root
     group: root
-    mode: 0744
+    mode: 0755
     backup: no
 
 - name: Restart cron daemon
