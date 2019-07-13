@@ -16,9 +16,16 @@
     mode: 0755
     backup: no
 
+- name: Add MAILTO cron variable
+  cron:
+    name: MAILTO
+    env: yes
+    job: s+cron@sadiqs.com
+
 - name: Add apt-maintenance cronjob
   cron:
     name: apt-maintenance
     special_time: daily
     job: /root/scripts/apt-maintenance.sh
     backup: yes
+    insertafter: MAILTO
