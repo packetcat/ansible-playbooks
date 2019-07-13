@@ -5,13 +5,15 @@
 - name: Copy cron script
   copy:
     src: apt-maintenance.sh
-    dest: /etc/cron.daily/apt-maintenance.sh
+    dest: /root/scripts/apt-maintenance.sh
     owner: root
     group: root
     mode: 0755
     backup: no
 
-- name: Restart cron daemon
-  service:
-    name: cron
-    state: restarted
+- name: Add apt-maintenance cronjob
+  cron:
+    name: apt-maintenance
+    special_time: daily
+    job: /root/scripts/apt-maintenance.sh
+    backup: yes
