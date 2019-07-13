@@ -28,4 +28,3 @@
     special_time: daily
     job: /root/scripts/apt-maintenance.sh
     backup: yes
-    insertafter: MAILTO
