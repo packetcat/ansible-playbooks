@@ -2,6 +2,11 @@
 # This task adds a daily cron job to do apt related maintenance
 # Update repos, update packages, autoremove packages
 
+- name: Ensure /root/scripts exists
+  file:
+    path: /root/scripts
+    state: directory
+
 - name: Copy cron script
   copy:
     src: apt-maintenance.sh
