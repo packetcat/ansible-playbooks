@@ -41,6 +41,39 @@
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             fastcgi_pass php;
           }
+      as393949.net.http:
+        - listen *:80
+        - listen [::]:80
+        - server_name as393949.net
+        - return 301 "https://$host$request_uri"
+      as393949.net.https:
+        - listen *:443 ssl http2
+        - listen [::]:443 ssl http2
+        - server_name as393949.net
+        - root "/srv/www/as393949.net/output"
+        - index index.html
+        - access_log "/var/log/nginx/as393949.net.access.log"
+        - error_log "/var/log/nginx/as393949.net.error.log"
+        - ssl_certificate "/etc/ssl/letsencrypt/as393949.net.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/as393949.net.pem"
+        - ssl_stapling on
+        - resolver [::1] valid=300s
+        - add_header Strict-Transport-Security max-age=31536000
+      aurigaplatform.pw.http:
+        - listen *:80
+        - listen [::]:80
+        - server_name aurigaplatform.pw
+        - index index.php index.html
+        - root "/srv/www/aurigaplatform.pw"
+        - access_log "/var/log/nginx/aurigaplatform.pw.access.log"
+        - error_log "/var/log/nginx/aurigaplatform.pw.error.log"
+        - client_max_body_size 10M
+        - location /.well-known/acme-challenge/ {
+            allow all;
+          }
+        - location / {
+            return 301 https://$host$request_uri;
+          }
       entropynet.net.http:
         - listen *:80
         - listen [::]:80
