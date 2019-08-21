@@ -45,6 +45,8 @@
     - python-dev
     - chrony
     - unattended-upgrades
+    - iptables-persistent
+    - netfilter-persistent
 - name: Remove packages we do not need
   apt:
     name: "{{ packages }}"
