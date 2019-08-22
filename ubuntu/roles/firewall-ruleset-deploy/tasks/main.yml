@@ -14,13 +14,11 @@
   copy:
     src: "{{ ansible_fqdn }}.rules.v4"
     dest: /etc/iptables/rules.v4
-    backup: yes
 
 - name: Copy IPv6 ruleset
   copy:
     src: "{{ ansible_fqdn }}.rules.v6"
     dest: /etc/iptables/rules.v6
-    backup: yes
 
 - name: Restart netfilter-persistent service to load rulesets
   service:
