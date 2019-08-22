@@ -7,7 +7,7 @@
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p tcp --dport 22 -j ACCEPT
 -A INPUT -p tcp --dport 5665 -j ACCEPT
--A icmp_in -p ipv6-icmp -m icmp6 -j ACCEPT
+-A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 128 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 134 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 135 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 136 -j ACCEPT
