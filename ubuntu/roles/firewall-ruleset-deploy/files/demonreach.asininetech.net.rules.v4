@@ -1,0 +1,16 @@
+*filter
+:INPUT DROP
+:FORWARD ACCEPT
+:OUTPUT ACCEPT
+:POSTROUTING ACCEPT
+-A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
+-A INPUT -i lo -j ACCEPT
+-A INPUT -p icmp --icmp-type ping -j ACCEPT
+-A INPUT -p tcp --dport 22 -j ACCEPT
+-A INPUT -p tcp --dport 5665 -j ACCEPT
+-A INPUT -p tcp --dport 9001 -j ACCEPT
+-A INPUT -p tcp -m multiport --dports 5269,5222 -j ACCEPT
+-A INPUT -p udp --dport 1194 -j ACCEPT
+-A INPUT -p udp --dport 53 -s 10.8.0.1/24 -j ACCEPT
+-A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+COMMIT
