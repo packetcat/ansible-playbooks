@@ -1,0 +1,13 @@
+---
+
+- name: restart netfilter-persistent-v4
+  service:
+    name: netfilter-persistent
+    state: restarted
+    enabled: yes
+
+- name: restart netfilter-persistent-v6
+  service:
+    name: netfilter-persistent
+    state: restarted
+    enabled: yes
