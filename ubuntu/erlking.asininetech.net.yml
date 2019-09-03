@@ -4,6 +4,8 @@
   roles:
   - role: jdauphant.nginx
     nginx_user: "www-data"
+    nginx_events_params:
+      - worker_connections 1024
     nginx_http_params:
       - sendfile "on"
       - server_names_hash_bucket_size 512
