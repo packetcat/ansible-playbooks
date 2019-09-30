@@ -282,6 +282,7 @@
             fastcgi_pass php;
             fastcgi_index index.php;
           }
+    nginx_remove_sites:
       char.packet.cat.http:
         - listen *:80
         - listen [::]:80
