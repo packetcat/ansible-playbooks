@@ -283,24 +283,6 @@
             fastcgi_index index.php;
           }
     nginx_remove_sites:
-      char.packet.cat.http:
-        - listen *:80
-        - listen [::]:80
-        - server_name char.packet.cat
-        - return 301 "https://$host$request_uri"
-      char.packet.cat.https:
-        - listen *:443 ssl http2
-        - listen [::]:443 ssl http2
-        - server_name char.packet.cat
-        - root "/srv/www/char.packet.cat"
-        - index index.html
-        - access_log "/var/log/nginx/char.packet.cat.access.log"
-        - error_log "/var/log/nginx/char.packet.cat.error.log"
-        - ssl_certificate "/etc/ssl/letsencrypt/char.packet.cat.crt"
-        - ssl_certificate_key "/etc/ssl/letsencrypt/char.packet.cat.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - add_header Strict-Transport-Security max-age=31536000
     nginx_configs:
       gzip:
         - gzip on
