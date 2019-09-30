@@ -282,7 +282,6 @@
             fastcgi_pass php;
             fastcgi_index index.php;
           }
-    nginx_remove_sites:
     nginx_configs:
       gzip:
         - gzip on
