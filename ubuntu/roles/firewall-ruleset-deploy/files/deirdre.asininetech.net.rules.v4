@@ -24,5 +24,6 @@
 -A OUTPUT -p tcp -m tcp --dport 587 -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 5665 -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 25 -j ACCEPT
+-A OUTPUT -p udp -m udp --dports 67,68 -j ACCEPT
 COMMIT
 # Completed on Thu Aug 22 02:25:12 2019
