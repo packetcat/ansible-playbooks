@@ -8,6 +8,7 @@
 -A INPUT -s 185.6.8.3/32 -m comment --comment "domaincrawler.com aggressive crawler/bot" -j DROP
 -A INPUT -s 185.6.8.7/32 -m comment --comment "domaincrawler.com aggressive crawler/bot" -j DROP
 -A INPUT -s 173.244.135.0/24 -m comment --comment "infegy data collection" -j DROP
+-A INPUT -s 103.114.191.0/24 -m comment --comment "1776 Solutions, kiwifarms" -j DROP
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
