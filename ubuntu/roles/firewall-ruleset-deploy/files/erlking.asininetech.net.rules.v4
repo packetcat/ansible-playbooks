@@ -4,6 +4,7 @@
 :OUTPUT ACCEPT
 -A INPUT -s 110.240.0.0/12 -m comment --comment "Bytespider crawler, aggressive" -j DROP
 -A INPUT -s 111.224.0.0/14 -m comment --comment "Bytespider crawler, aggressive" -j DROP
+-A INPUT -s 220.243.128.0/20 -m comment --comment "Bytespider crawler, aggressive" -j DROP
 -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p icmp --icmp-type ping -j ACCEPT
