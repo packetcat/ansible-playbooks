@@ -2,6 +2,7 @@
 :INPUT DROP
 :FORWARD DROP
 :OUTPUT ACCEPT
+-A INPUT -s 110.240.0.0/12 -m comment --comment "Bytespider crawler, aggressive" -j DROP
 -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p icmp --icmp-type ping -j ACCEPT

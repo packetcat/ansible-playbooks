@@ -6,6 +6,7 @@
 -A INPUT -s 64.62.202.71/32 -j DROP
 -A INPUT -s 173.244.135.0/24 -m comment --comment "infegy data collection" -j DROP
 -A INPUT -s 103.114.191.0/24 -m comment --comment "1776 Solutions, kiwifarms" -j DROP
+-A INPUT -s 110.240.0.0/12 -m comment --comment "Bytespider crawler, aggressive" -j DROP
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
