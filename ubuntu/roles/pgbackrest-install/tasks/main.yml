@@ -5,7 +5,7 @@
   copy:
     src: /builds/pgbackrest-release-2.18/src/pgbackrest
     dest: /usr/bin/pgbackrest
-    mode: '0744'
+    mode: '0755'
 
 - name: Make sure Perl is installed
   apt:
