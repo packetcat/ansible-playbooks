@@ -1,0 +1,9 @@
+/var/log/pgbackrest/*.log {
+        daily
+        missingok
+        rotate 7
+        compress
+        delaycompress
+        notifempty
+        create 640 postgres postgres
+}
