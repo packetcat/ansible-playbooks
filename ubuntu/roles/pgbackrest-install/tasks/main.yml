@@ -1,0 +1,34 @@
+---
+# This task installs pgbackrest on a host
+
+- name: Copy pgbackrest binary to host
+  copy:
+    src: /builds/pgbackrest-release-2.18/src/pgbackrest
+    dest: /usr/bin/pgbackrest
+    mode: '0744'
+
+- name: Make sure Perl is installed
+  apt:
+    name: perl
+    state: latest
+
+- name: Make pgbackrest log directory with the correct permissions
+  file:
+    path: /var/log/pgbackrest
+    state: directory
+    owner: postgres
+    group: postgres
+    mode: '0770'
+
+- name: Make pgbackrest config directory
+  file:
+    path: /etc/pgbackrest/conf.d
+    state: directory
+
+- name: Touch pgbackrest.conf
+  file:
+    path: /etc/pgbackrest/pgbackrest.conf
+    state: touch
+    owner: postgres
+    group: postgres
+    mode: '0640'

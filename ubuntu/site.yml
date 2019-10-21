@@ -59,3 +59,10 @@
 
   roles:
     - firewall-ruleset-deploy
+
+- name: Install pgbackrest
+  host: pgbackrest
+  user: root
+
+  roles:
+    - pgbackrest-install
