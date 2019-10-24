@@ -282,6 +282,39 @@
             fastcgi_pass php;
             fastcgi_index index.php;
           }
+      irreverent.space.http:
+        - listen *:80
+        - listen [::]:80
+        - server_name irreverent.space
+        - return 301 "https://$host$request_uri"
+      irreverent.space.https:
+        - listen *:443 ssl http2
+        - listen [::]:443 ssl http2
+        - server_name irreverent.space
+        - root "/srv/www/irreverent.space"
+        - index index.php index.html
+        - access_log "/var/log/nginx/irreverent.space.access.log"
+        - error_log "/var/log/nginx/irreverent.space.error.log"
+        - client_max_body_size 10M
+        - ssl_certificate "/etc/ssl/letsencrypt/irreverent.space.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/irreverent.space.pem"
+        - ssl_stapling on
+        - resolver [::1] valid=300s
+        - add_header Strict-Transport-Security max-age=31536000
+        - location / {
+            try_files $uri $uri/ /index.php?$args;
+          }
+        - location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+            expires 24h;
+          }
+        - location ~ \.php$ {
+            try_files $uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            include fastcgi_params;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_pass php;
+          }
     nginx_configs:
       gzip:
         - gzip on
