@@ -46,7 +46,7 @@
   roles:
     - turn-off-motd-news
 
-- name: Add apt-maintenance cron job
+- name: Set up unattended-upgrades for Ubuntu nodes
   hosts: myubuntunodes
   user: root
 
