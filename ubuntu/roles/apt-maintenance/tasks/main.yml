@@ -28,3 +28,4 @@
     special_time: daily
     job: /root/scripts/apt-maintenance.sh
     backup: yes
+    state: absent
