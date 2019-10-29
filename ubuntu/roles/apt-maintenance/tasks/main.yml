@@ -1,31 +1,21 @@
 ---
-# This task adds a daily cron job to do apt related maintenance
-# Update repos, update packages, autoremove packages
+# This task sets up unattended-upgrade's config
 
-- name: Ensure /root/scripts exists
-  file:
-    path: /root/scripts
-    state: directory
+- name: Install unattended-upgrade and apt-listchanges
+  apt: name={{ packages }} state=latest update_cache=yes
+  vars:
+    packages:
+      - unattended-upgrades
+      - apt-listchanges
 
-- name: Copy cron script
+- name: Copy our 50unattended-upgrades
   copy:
-    src: apt-maintenance.sh
-    dest: /root/scripts/apt-maintenance.sh
-    owner: root
-    group: root
-    mode: 0755
-    backup: no
+    src: 50unattended-upgrades
+    dest: /etc/apt/apt.conf.d/50unattended-upgrades
 
-- name: Add MAILTO cron variable
-  cron:
-    name: MAILTO
-    env: yes
-    job: s+cron@sadiqs.com
-
-- name: Disable apt-maintenance cronjob
-  cron:
-    name: apt-maintenance
-    special_time: daily
-    job: /root/scripts/apt-maintenance.sh
-    backup: yes
-    state: absent
+- name: Ensure 20auto-upgrades has the correct values using debconf
+  debconf:
+    name: unattended-upgrades
+    question: unattended-upgrades/enable_auto_updates
+    vtype: boolean
+    value: true
