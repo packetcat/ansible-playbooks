@@ -38,8 +38,6 @@
     - htop
     - haveged
     - python-pip
-    - duplicity
-    - python-boto
     - build-essential
     - vnstat
     - python-dev
@@ -47,6 +45,8 @@
     - unattended-upgrades
     - iptables-persistent
     - netfilter-persistent
+    - mailutils
+    - postfix
 - name: Remove packages we do not need
   apt:
     name: "{{ packages }}"
