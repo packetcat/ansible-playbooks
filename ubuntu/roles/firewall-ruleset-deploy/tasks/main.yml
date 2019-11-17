@@ -9,6 +9,7 @@
     packages:
     - iptables-persistent
     - netfilter-persistent
+    - ipset
 
 - name: Copy IPv4 ruleset
   copy:
