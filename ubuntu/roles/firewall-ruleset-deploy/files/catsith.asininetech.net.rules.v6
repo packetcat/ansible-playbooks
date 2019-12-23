@@ -3,6 +3,7 @@
 :FORWARD DROP
 :OUTPUT DROP
 :icmp_in -
+-A INPUT -s 2601:647:300:fab:8c74:7e2f:58c0:4f92/128 -m comment --comment "Aggressive Masto API crawler" -j DROP
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
