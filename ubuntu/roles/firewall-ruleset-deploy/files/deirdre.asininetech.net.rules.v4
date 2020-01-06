@@ -18,7 +18,6 @@
 -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
 -A INPUT -p tcp -m multiport --dports 80,443 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 5665 -j ACCEPT
--A INPUT -p tcp -m tcp --dport 4949 -j ACCEPT
 -A OUTPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A OUTPUT -o lo -j ACCEPT
 -A OUTPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
