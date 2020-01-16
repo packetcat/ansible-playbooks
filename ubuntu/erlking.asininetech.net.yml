@@ -293,29 +293,6 @@
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             fastcgi_pass php;
           }
-    nginx_remove_sites:
-      i.asininetech.com.http:
-        - listen *:80
-        - listen [::]:80
-        - server_name i.asininetech.com
-        - return 301 "https://$host$request_uri"
-      i.asininetech.com.https:
-        - listen *:443 ssl http2
-        - listen [::]:443 ssl http2
-        - server_name i.asininetech.com
-        - root "/home/tenshi/public_html"
-        - index index.html
-        - access_log "/var/log/nginx/i.asininetech.com.access.log"
-        - error_log "/var/log/nginx/i.asininetech.com.error.log"
-        - ssl_certificate "/etc/ssl/letsencrypt/i.asininetech.com.crt"
-        - ssl_certificate_key "/etc/ssl/letsencrypt/i.asininetech.com.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - location / {
-            autoindex off;
-            autoindex_exact_size off;
-          }
-        - add_header Strict-Transport-Security max-age=31536000      
     nginx_configs:
       gzip:
         - gzip on
