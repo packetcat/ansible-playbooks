@@ -1,6 +1,6 @@
 - hosts: tf-elasticsearch
   roles:
     - geerlingguy.java
-    - geerlingguy.elasticsearch
+  - role: geerlingguy.elasticsearch
     elasticsearch_network_host: 0.0.0.0
     elasticsearch_heap_size_max: 4g
