@@ -3,5 +3,5 @@
   - role: geerlingguy.java
   - role: geerlingguy.elasticsearch
     elasticsearch_network_host: 0.0.0.0
-    elasticsearch_heap_size_min: 4g
+    elasticsearch_heap_size_min: 1g
     elasticsearch_heap_size_max: 4g
