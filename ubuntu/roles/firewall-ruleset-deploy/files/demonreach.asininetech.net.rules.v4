@@ -11,6 +11,7 @@
 -A INPUT -p tcp -m multiport --dports 5269,5222 -j ACCEPT
 -A INPUT -p udp --dport 1194 -j ACCEPT
 -A INPUT -p udp --dport 53 -s 10.8.0.1/24 -j ACCEPT
+-A INPUT -p tcp --dport 1723 -j ACCEPT
 COMMIT
 *nat
 :PREROUTING ACCEPT
