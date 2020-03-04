@@ -9,6 +9,8 @@
 -A INPUT -p tcp --dport 5665 -j ACCEPT
 -A INPUT -p tcp --dport 9001 -j ACCEPT
 -A INPUT -p tcp -m multiport --dports 5269,5222 -j ACCEPT
+-A INPUT -p udp -s 2620:98:4002::/48 --dport 53 -j ACCEPT
+-A INPUT -p tcp -s 2620:98:4002::/48 --dport 53 -j ACCEPT
 -A INPUT -p ipv6-icmp -j icmp_in
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 128 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 134 -j ACCEPT
