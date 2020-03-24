@@ -65,3 +65,7 @@
      - chrony
 - name: Ensure that the periodic APT cron task clears out old kernels and does unattended security upgrades
   copy: src=10periodic dest=/etc/apt/apt.conf.d/10periodic backup=yes owner=root group=root mode=0644
+- name: Copy our sshd_config over and restart sshd
+  copy: src=sshd_config dest=/etc/ssh/sshd_config backup=yes owner=root group=root mode=0644
+  notify:
+  - restart sshd
