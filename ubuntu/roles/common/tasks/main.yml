@@ -57,6 +57,7 @@
     - consolekit
     - snapd
     - lxcfs
+    - rpcbind
 - name: Ensure haveged, ntp, and vnstat are started on boot
   service: name={{ item }} enabled=yes
   with_items:
