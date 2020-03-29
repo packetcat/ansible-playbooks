@@ -10,6 +10,7 @@
 -A INPUT -s 220.243.128.0/20 -m comment --comment "Bytespider crawler, aggressive" -j DROP
 -A INPUT -s 95.216.172.167/32 -m comment --comment "Seekport Crawler, aggressive" -j DROP
 -A INPUT -s 147.75.106.146/32 -m comment --comment "SearchAtlas.com SEO Crawler, doesn't respect robots.txt" -j DROP
+-A INPUT -s 216.244.66.229/32 -m comment --comment "moz.com SEO crawler" -j DROP
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
