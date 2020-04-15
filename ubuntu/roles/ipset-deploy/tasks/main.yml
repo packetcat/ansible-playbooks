@@ -17,7 +17,7 @@
     src: "{{ ansible_fqdn }}.ipset"
     dest: /etc/ipset.conf
 
-- name: Restart ipset
+- name: Restart ipset service
   systemd:
     name: ipset
     state: restarted

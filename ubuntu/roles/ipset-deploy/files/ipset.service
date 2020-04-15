@@ -6,10 +6,9 @@ Before=netfilter-persistent.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/sbin/ipset -f /etc/ipset.conf restore
-ExecReload=/sbin/ipset -f /etc/ipset.conf restore
+ExecStart=/sbin/ipset -! -f /etc/ipset.conf restore
+ExecReload=/sbin/ipset -! -f /etc/ipset.conf restore
 ExecStop=/sbin/ipset flush
-ExectStopPost=/sbin/ipset destroy
 
 [Install]
 WantedBy=multi-user.target
