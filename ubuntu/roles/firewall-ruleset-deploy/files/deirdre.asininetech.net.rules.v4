@@ -4,7 +4,7 @@
 :INPUT DROP
 :FORWARD DROP
 :OUTPUT DROP
-#-A INPUT -m set --match-set nasties src -j DROP
+-A INPUT -m set --match-set nasties src -j DROP
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
