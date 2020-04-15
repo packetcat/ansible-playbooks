@@ -1,0 +1,28 @@
+---
+# This role deploys ipset rulesets to Ubuntu hosts
+
+- name: Copy ipset.service
+  copy:
+    src: ipset.service
+    dest: /etc/systemd/system/ipset.service
+  notify:
+    - reload systemd
+
+- name: Enable ipset.service
+  systemd:
+    name: ipset
+    enabled: yes
+
+- name: Copy ipset rulesets
+  copy:
+    src: "{{ ansible_fqdn }}".ipset
+    dest: /etc/ipset.conf
+
+- name: Flush any existing ipsets
+  shell:
+    cmd: /sbin/ipset destroy
+
+- name: Start ipset.service
+  systemd:
+    name: ipset
+    state: started
