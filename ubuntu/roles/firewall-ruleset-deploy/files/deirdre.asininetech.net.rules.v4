@@ -4,19 +4,7 @@
 :INPUT DROP
 :FORWARD DROP
 :OUTPUT DROP
--A INPUT -s 159.149.133.66/32 -m comment --comment "Scrapy bot from University of Milan" -j DROP
--A INPUT -s 185.6.8.3/32 -m comment --comment "domaincrawler.com aggressive crawler/bot" -j DROP
--A INPUT -s 185.6.8.7/32 -m comment --comment "domaincrawler.com aggressive crawler/bot" -j DROP
--A INPUT -s 173.244.135.0/24 -m comment --comment "infegy data collection" -j DROP
--A INPUT -s 103.114.191.0/24 -m comment --comment "1776 Solutions, kiwifarms" -j DROP
--A INPUT -s 110.240.0.0/12 -m comment --comment "Bytespider crawler, aggressive" -j DROP
--A INPUT -s 111.224.0.0/14 -m comment --comment "Bytespider crawler, aggressive" -j DROP
--A INPUT -s 220.243.128.0/20 -m comment --comment "Bytespider crawler, aggressive" -j DROP
--A INPUT -s 95.216.172.167/32 -m comment --comment "Seekport Crawler, aggressive" -j DROP
--A INPUT -s 147.75.106.146/32 -m comment --comment "SearchAtlas.com SEO Crawler, doesn't respect robots.txt" -j DROP
--A INPUT -s 5.188.210.0/24 -m comment --comment "AlkonavtNetwork, Russian spam account creation source" -j DROP
--A INPUT -s 207.180.207.4/32 -m comment --comment "zotum.net, weird traffic causing 499s?" -j DROP
--A INPUT -s 216.244.66.229/32 -m comment --comment "moz.com SEO crawler" -j DROP
+-A INPUT -m set --match-set nasties -j DROP
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p icmp -m icmp --icmp-type 8 -j ACCEPT
