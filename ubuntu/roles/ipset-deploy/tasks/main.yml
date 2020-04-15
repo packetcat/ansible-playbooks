@@ -1,10 +1,6 @@
 ---
 # This role deploys ipset rulesets to Ubuntu hosts
 
-- name: Destroy any existing ipsets
-  shell:
-    cmd: /sbin/ipset destroy
-
 - name: Copy ipset.service
   copy:
     src: ipset.service
