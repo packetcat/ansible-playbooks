@@ -21,5 +21,8 @@
   copy:
     src: "{{ ansible_fqdn }}.ipset"
     dest: /etc/ipset.conf
-  notify:
-    - restart ipset
+
+- name: Restart ipset
+  systemd:
+    name: ipset
+    state: restarted
