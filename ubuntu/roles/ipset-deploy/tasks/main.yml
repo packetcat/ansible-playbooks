@@ -1,6 +1,10 @@
 ---
 # This role deploys ipset rulesets to Ubuntu hosts
 
+- name: Flush any existing ipsets
+  shell:
+    cmd: /sbin/ipset destroy
+
 - name: Copy ipset.service
   copy:
     src: ipset.service
@@ -17,10 +21,6 @@
   copy:
     src: "{{ ansible_fqdn }}.ipset"
     dest: /etc/ipset.conf
-
-- name: Flush any existing ipsets
-  shell:
-    cmd: /sbin/ipset destroy
 
 - name: Start ipset.service
   systemd:
