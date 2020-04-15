@@ -3,7 +3,7 @@
 
 - name: Flush any existing ipsets
   shell:
-    cmd: /sbin/ipset destroy
+    cmd: /sbin/ipset flush
 
 - name: Copy ipset.service
   copy:
