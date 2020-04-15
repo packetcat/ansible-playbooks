@@ -15,7 +15,7 @@
 
 - name: Copy ipset rulesets
   copy:
-    src: "{{ ansible_fqdn }}".ipset
+    src: "{{ ansible_fqdn }}.ipset"
     dest: /etc/ipset.conf
 
 - name: Flush any existing ipsets
