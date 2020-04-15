@@ -1,14 +1,16 @@
 [Unit]
 Description=Loading IP Sets
-Before=network-pre.target netfilter-persistent.service
-Wants=network-pre.target
+Before=netowrk.target
+Before=netfilter-persistent.service
 
 [Service]
 Type=oneshot
 RemainAfterExit=yes
 ExecStart=/sbin/ipset -f /etc/ipset.conf restore
 ExecReload=/sbin/ipset -f /etc/ipset.conf restore
-ExecStop=/sbin/ipset destroy
+ExecStop=/sbin/ipset flush
+ExectStopPost=/sbin/ipset destroy
 
 [Install]
 WantedBy=multi-user.target
+RequiredBy=netfilter-persistent.service
