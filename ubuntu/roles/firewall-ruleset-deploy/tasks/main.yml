@@ -11,6 +11,11 @@
     - netfilter-persistent
     - ipset
 
+- name: Copy defaults file with our mods
+  copy:
+    src: netfilter-persistent
+    dest: /etc/default/netfilter-persistent
+
 - name: Copy IPv4 ruleset
   copy:
     src: "{{ ansible_fqdn }}.rules.v4"
