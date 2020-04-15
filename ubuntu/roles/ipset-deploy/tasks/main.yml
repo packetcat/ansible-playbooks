@@ -9,13 +9,12 @@
   copy:
     src: ipset.service
     dest: /etc/systemd/system/ipset.service
-  notify:
-    - reload systemd
 
 - name: Enable ipset.service
   systemd:
     name: ipset
     enabled: yes
+    daemon_reload: yes
 
 - name: Copy ipset rulesets
   copy:
