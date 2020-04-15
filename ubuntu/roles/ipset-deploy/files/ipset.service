@@ -1,6 +1,6 @@
 [Unit]
 Description=Loading IP Sets
-Before=netowrk.target
+Before=network.target
 Before=netfilter-persistent.service
 
 [Service]
