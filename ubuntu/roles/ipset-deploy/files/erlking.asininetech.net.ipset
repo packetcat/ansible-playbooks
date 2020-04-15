@@ -1,0 +1,14 @@
+create nasties hash:net family inet hashsize 1024 maxelem 65536
+# domaincrawler.com aggressive crawler/bot
+add nasties 185.6.8.3/32
+add nasties 185.6.8.7/32
+# Bytespider crawler, aggressive
+add nasties 110.240.0.0/12
+add nasties 111.224.0.0/14
+add nasties 220.243.128.0/20
+# Seekport Crawler, aggressive
+add nasties 95.216.172.167/32
+# SearchAtlas.com SEO Crawler, doesn't respect robots.txt
+add nasties 147.75.106.146/32
+# moz.com SEO crawler
+add nasties 216.244.66.229/32
