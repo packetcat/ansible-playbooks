@@ -8,7 +8,7 @@ Type=oneshot
 RemainAfterExit=yes
 ExecStart=/sbin/ipset -f /etc/ipset.conf restore
 ExecReload=/sbin/ipset -f /etc/ipset.conf restore
-ExecStop=/sbin/ipset flush
+ExecStop=/sbin/ipset destroy
 
 [Install]
 WantedBy=multi-user.target
