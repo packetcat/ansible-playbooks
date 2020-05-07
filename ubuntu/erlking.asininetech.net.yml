@@ -163,7 +163,6 @@
         - ssl_stapling on
         - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
-        - error_page 404 /404.html
       ttrss.sadiqsaif.com.http:
         - listen *:80
         - listen [::]:80
