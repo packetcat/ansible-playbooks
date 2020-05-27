@@ -14,3 +14,5 @@ add nasties 147.75.106.146/32
 add nasties 216.244.66.229/32
 # Aspiegel (Huawei) bot range
 add nasties 114.119.160.0/21
+# Centurybot
+add nasties 64.62.202.73/32
