@@ -24,3 +24,4 @@ add nasties 114.119.160.0/21
 add nasties 64.62.202.73/32
 # Pimeyes.com crawler
 add nasties 116.202.237.211/32
+add nasties 116.202.234.96/32
