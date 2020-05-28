@@ -24,3 +24,5 @@ add nasties 216.244.66.229/32
 add nasties 114.119.160.0/21
 # Centurybot
 add nasties 64.62.202.73/32
+# Pimeyes.com crawler
+add nasties 116.202.237.211/32
