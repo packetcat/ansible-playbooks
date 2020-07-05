@@ -3,6 +3,8 @@
 :FORWARD DROP
 :OUTPUT DROP
 :icmp_in -
+# weird api/accounts crawler
+-A INPUT -p tcp -m tcp -s 2001:19f0:6001:5aa0:5400:2ff:fecf:eee5/128 -j DROP
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -i lo -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 22 -j ACCEPT
