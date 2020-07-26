@@ -29,6 +29,7 @@
         - ssl_certificate_key "/etc/ssl/letsencrypt/tenforward.social.pem"
         - add_header Referrer-Policy "no-referrer, strict-origin-when-cross-origin"
         - add_header Strict-Transport-Security max-age=31536000
+        - add_header 'Access-Control-Allow-Origin'  '*';
         - client_max_body_size 0
         - location / {
             try_files $uri @proxy;
