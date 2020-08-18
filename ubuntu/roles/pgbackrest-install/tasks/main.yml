@@ -3,7 +3,7 @@
 
 - name: Copy pgbackrest binary to host
   copy:
-    src: /builds/pgbackrest-release-2.18/src/pgbackrest
+    src: /builds/pgbackrest-release-2.28/src/pgbackrest
     dest: /usr/bin/pgbackrest
     mode: '0755'
 
