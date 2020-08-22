@@ -64,3 +64,7 @@
      - chrony
 - name: Ensure that the periodic APT cron task clears out old kernels and does unattended security upgrades
   copy: src=10periodic dest=/etc/apt/apt.conf.d/10periodic backup=yes owner=root group=root mode=0644
+- name: Set hostname
+  hostname:
+    name: {{ inventory_hostname }}
+    use: systemd
