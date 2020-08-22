@@ -1,0 +1,15 @@
+---
+# This task enforces our OpenSSH server config and authorized_keys for
+# cloud servers
+
+- name: Copy our authorized_keys
+  copy:
+    src: authorized_keys
+    dest: /root/.ssh/authorized_keys
+
+- name: Copy our sshd_config
+  copy:
+    src: sshd_config
+    dest: /etc/ssh/sshd_config
+  notify:
+    - restart sshd

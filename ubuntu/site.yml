@@ -73,3 +73,10 @@
 
   roles:
     - ipset-deploy
+
+- name: SSH Enforcement
+  hosts: cloud
+  user: root
+
+  roles:
+    - ssh-enforcement
