@@ -66,5 +66,5 @@
   copy: src=10periodic dest=/etc/apt/apt.conf.d/10periodic backup=yes owner=root group=root mode=0644
 - name: Set hostname
   hostname:
-    name: {{ inventory_hostname }}
+    name: "{{ inventory_hostname }}"
     use: systemd
