@@ -1,0 +1,7 @@
+---
+- name: Install pgbackrest
+  hosts: pgbackrest
+  user: root
+
+  roles:
+    - pgbackrest-install

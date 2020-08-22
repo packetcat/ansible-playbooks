@@ -1,0 +1,7 @@
+---
+- name: Deploy ipset rulesets
+  hosts: ipset
+  user: root
+
+  roles:
+    - ipset-deploy

@@ -1,0 +1,7 @@
+---
+- name: Deploy firewall rules
+  hosts: firewalled
+  user: root
+
+  roles:
+    - firewall-ruleset-deploy
