@@ -8,6 +8,7 @@
     - common
     - turn-off-motd-news
     - apt-maintenance
+    - ssh-enforcement
 
 - name: install PHP-FPM to required nodes
   hosts: php
