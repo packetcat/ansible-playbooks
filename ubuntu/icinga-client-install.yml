@@ -1,6 +1,6 @@
 ---
 - name: install Icinga 2 for client usage
-  hosts: icinga-clients
+  hosts: icingaclients
   user: root
 
   roles:
