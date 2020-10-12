@@ -35,9 +35,7 @@ add nasties 75.64.236.168/32
 # search.noc.social
 add nasties 149.248.4.242/32
 # Adsbot
-add nasties 216.18.204.140/32
 add nasties 173.231.59.205/32
-add nasties 216.18.204.144/32
 add nasties 173.231.59.200/32
 add nasties 173.231.59.194/32
-add nasties 216.18.204.214/32
+add nasties 216.18.204.0/24

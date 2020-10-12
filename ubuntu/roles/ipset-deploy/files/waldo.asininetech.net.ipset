@@ -31,9 +31,7 @@ add nasties 116.202.228.159/32
 # Local timeline crawler on Comcast residential
 add nasties 75.64.236.168/32
 # Adsbot
-add nasties 216.18.204.140/32
 add nasties 173.231.59.205/32
-add nasties 216.18.204.144/32
 add nasties 173.231.59.200/32
 add nasties 173.231.59.194/32
-add nasties 216.18.204.214/32
+add nasties 216.18.204.0/24
