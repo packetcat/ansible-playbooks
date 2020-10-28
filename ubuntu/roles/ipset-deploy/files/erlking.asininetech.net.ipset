@@ -25,3 +25,5 @@ add nasties 116.202.228.159/32
 # Adsbot
 add nasties 216.18.204.0/24
 add nasties 173.231.59.0/24
+# Unknown crawler, no user agent, doesn't actually respect robots.txt
+add nasties 217.160.142.105/32
