@@ -27,7 +27,6 @@
   vars:
     packages:
     - most
-    - zsh
     - vim
     - vim-scripts
     - git
