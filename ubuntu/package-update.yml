@@ -1,6 +1,13 @@
 ---
-- name: Update packages on nodes
+- name: Update packages on cloud nodes
   hosts: cloud
+  user: root
+
+  roles:
+    - package-update
+
+- name: Update packages on home nodes
+  hosts: home
   user: root
 
   roles:
