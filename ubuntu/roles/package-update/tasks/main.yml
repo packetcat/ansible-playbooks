@@ -1,0 +1,5 @@
+---
+# This role updates packages and performs autoremove
+
+- name: Update apt cache and then packages with autoremove
+  apt: update_cache=yes upgrade=safe autoremove=yes

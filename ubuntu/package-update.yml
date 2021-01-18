@@ -1,0 +1,7 @@
+---
+- name: Update packages on nodes
+  hosts: cloud
+  user: root
+
+  roles:
+    - package-update
