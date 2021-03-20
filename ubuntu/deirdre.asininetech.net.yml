@@ -30,6 +30,7 @@
         - add_header Referrer-Policy "no-referrer, strict-origin-when-cross-origin"
         - add_header Strict-Transport-Security max-age=31536000
         - add_header Access-Control-Allow-Origin *
+        - include snippets/blockbots.conf
         - client_max_body_size 0
         - location / {
             try_files $uri @proxy;
@@ -96,3 +97,8 @@
         - ssl_session_timeout 1d
         - ssl_session_cache shared:SSL:50m
         - ssl_session_tickets off
+    nginx_snippets:
+      blockbots:
+        - if ($http_user_agent ~* (LanaiBotmarch) ) {
+            return 403;
+          }
