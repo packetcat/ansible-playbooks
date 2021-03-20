@@ -5,7 +5,7 @@ add nasties 159.149.133.66/32
 add nasties 185.6.8.3/32
 add nasties 185.6.8.7/32
 # infegy data collection
-add nasties 173.244.135.0/24
+add nasties 173.244.135.0/25
 # 1776 Solutions, kiwifarms
 add nasties 103.114.191.0/24
 # Bytespider crawler, aggressive
