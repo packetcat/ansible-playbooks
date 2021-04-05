@@ -21,6 +21,7 @@
 -A OUTPUT -p tcp -m tcp --dport 5665 -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 25 -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 9200 -j ACCEPT
+-A OUTPUT -p udp -m udp --dport 123 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 128 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 134 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 135 -j ACCEPT
