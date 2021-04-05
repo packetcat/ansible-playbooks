@@ -21,8 +21,5 @@
 -A OUTPUT -p tcp -m tcp --dport 5665 -j ACCEPT
 -A OUTPUT -p tcp -m tcp --dport 25 -j ACCEPT
 -A OUTPUT -p udp -m multiport --dports 67,68 -j ACCEPT
--A OUTPUT -p tcp -m tcp --dport 9200 -j ACCEPT
--A OUTPUT -p tcp -m tcp --dport 655 -j ACCEPT
--A OUTPUT -p udp -m udp --dport 655 -j ACCEPT
 -A OUTPUT -p udp -m udp --dport 123 -j ACCEPT
 COMMIT
