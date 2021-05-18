@@ -99,6 +99,6 @@
         - ssl_session_tickets off
     nginx_snippets:
       blockbots:
-        - if ($http_user_agent ~* (LanaiBotmarch) ) {
+        - if ($http_user_agent ~* (LanaiBotmarch|lanaibot) ) {
             return 403;
           }
