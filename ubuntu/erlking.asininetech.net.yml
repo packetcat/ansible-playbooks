@@ -149,7 +149,7 @@
         - listen *:443 ssl http2
         - listen [::]:443 ssl http2
         - server_name sadiqsaif.com
-        - root "/srv/www/sadiqsaif.com"
+        - root "/srv/www/sadiqsaif.com/public"
         - index index.html
         - access_log "/var/log/nginx/sadiqsaif.com.access.log"
         - error_log "/var/log/nginx/sadiqsaif.com.error.log"
