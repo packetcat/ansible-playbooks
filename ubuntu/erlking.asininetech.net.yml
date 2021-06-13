@@ -151,6 +151,7 @@
         - server_name sadiqsaif.com
         - root "/srv/www/sadiqsaif.com/public"
         - index index.html
+        - error_page 404 /404.html
         - access_log "/var/log/nginx/sadiqsaif.com.access.log"
         - error_log "/var/log/nginx/sadiqsaif.com.error.log"
         - ssl_certificate "/etc/ssl/letsencrypt/sadiqsaif.com.crt"
