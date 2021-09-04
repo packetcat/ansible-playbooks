@@ -12,6 +12,9 @@
 -A INPUT -p udp --dport 1194 -j ACCEPT
 -A INPUT -p udp --dport 53 -s 10.8.0.1/24 -j ACCEPT
 -A INPUT -p tcp --dport 53 -s 10.8.0.1/24 -j ACCEPT
+-A INPUT -p udp --dport 53 -s 10.66.66.0/24/24 -j ACCEPT
+-A INPUT -p tcp --dport 53 -s 10.66.66.0/24 -j ACCEPT
+-A INPUT -p udp --dport 51802 -j ACCEPT
 COMMIT
 *nat
 :PREROUTING ACCEPT
@@ -19,4 +22,5 @@ COMMIT
 :OUTPUT ACCEPT
 :POSTROUTING ACCEPT
 -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
+-A POSTROUTING -s 10.66.66.0/24 -o eth0 -j MASQUERADE
 COMMIT

@@ -20,4 +20,6 @@
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 2 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 3 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 4 -j ACCEPT
+:POSTROUTING ACCEPT
+-A POSTROUTING -s fd42:42:42::/64 -o eth0 -j MASQUERADE
 COMMIT
