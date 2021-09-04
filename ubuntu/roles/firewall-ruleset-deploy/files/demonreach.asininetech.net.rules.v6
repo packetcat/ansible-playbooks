@@ -20,6 +20,7 @@
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 2 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 3 -j ACCEPT
 -A icmp_in -p ipv6-icmp -m icmp6 --icmpv6-type 4 -j ACCEPT
+COMMIT
 *nat
 :PREROUTING ACCEPT
 :INPUT ACCEPT
