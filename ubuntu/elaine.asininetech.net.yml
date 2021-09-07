@@ -20,6 +20,7 @@
         - listen [::]:443 ssl http2
         - server_name nitter.ca
         - access_log off
+        - error_log "/var/log/nginx/nitter.ca.error.log"
         - ssl_certificate "/etc/ssl/letsencrypt/nitter.ca.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/nitter.ca.pem"
         - ssl_stapling on
