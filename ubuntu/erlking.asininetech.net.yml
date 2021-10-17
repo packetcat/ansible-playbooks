@@ -303,6 +303,15 @@
             fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
             fastcgi_pass php;
           }
+      bastetrix.com.http:
+        - listen *:80
+        - listen [::]:80
+        - server_name bastetrix.com
+        - root "/srv/www/bastetrix.com/public"
+        - location /.well-known/acme-challenge/ {
+            allow all;
+          }
+        - return 301 "https://$host$request_uri"
     nginx_configs:
       gzip:
         - gzip on
