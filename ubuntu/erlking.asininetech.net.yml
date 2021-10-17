@@ -27,25 +27,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/asininetech.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/asininetech.com.pem"
         - include snippets/sslstapling_hsts.conf
-        - set $cache_uri $request_uri
-        - if ( $request_method = POST ) { set $cache_uri 'null cache'; }
-        - if ( $query_string != "" ) { set $cache_uri 'null cache'; }
-        - if ( $request_uri ~* "/wp-admin/|/xmlrpc.php|/wp-(app|cron|login|register|mail).php|wp-.*.php|/feed/|index.php|wp-comments-popup.php|wp-links-opml.php|wp-locations.php|sitemap(_index)?.xml|[a-z0-9_-]+-sitemap([0-9]+)?.xml" ) { set $cache_uri 'null cache'; }
-        - if ( $http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in" ) { set $cache_uri 'null cache'; }
-        - location / {
-            try_files /wp-content/cache/supercache/$http_host/$cache_uri/index.html $uri $uri/ /index.php?$args;
-          }
-        - location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|js|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf|woff2)$ {
-            expires max;
-          }
-        - location ~ \.php$ {
-            try_files $uri =404;
-            fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            include fastcgi_params;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            fastcgi_pass php;
-          }
+        - include snippets/wp_with_supercache.conf
       entropynet.net.http:
         - listen *:80
         - listen [::]:80
@@ -80,28 +62,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/twoshadesofbrown.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/twoshadesofbrown.com.pem"
         - include snippets/sslstapling_hsts.conf
-        - set $cache_uri $request_uri
-        - if ( $request_method = POST ) { set $cache_uri 'null cache'; }
-        - if ( $query_string != "" ) { set $cache_uri 'null cache'; }
-        - if ( $request_uri ~* "/wp-admin/|/xmlrpc.php|/wp-(app|cron|login|register|mail).php|wp-.*.php|/feed/|index.php|wp-comments-popup.php|wp-links-opml.php|wp-locations.php|sitemap(_index)?.xml|[a-z0-9_-]+-sitemap([0-9]+)?.xml" ) { set $cache_uri 'null cache'; }
-        - if ( $http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in" ) { set $cache_uri 'null cache'; }
-        - location / {
-            try_files /wp-content/cache/supercache/$http_host/$cache_uri/index.html $uri $uri/ /index.php?$args;
-          }
-        - location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|js|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf|woff2)$ {
-            expires max;
-          }
-        - location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
-            expires 24h;
-          }
-        - location ~ \.php$ {
-            try_files $uri =404;
-            fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            include fastcgi_params;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            fastcgi_pass php;
-          }
+        - include snippets/wp_with_supercache.conf
       wiki.staticsafe.ca.http:
         - listen *:80
         - listen [::]:80
@@ -230,25 +191,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/irreverent.space.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/irreverent.space.pem"
         - include snippets/sslstapling_hsts.conf
-        - set $cache_uri $request_uri
-        - if ( $request_method = POST ) { set $cache_uri 'null cache'; }
-        - if ( $query_string != "" ) { set $cache_uri 'null cache'; }
-        - if ( $request_uri ~* "/wp-admin/|/xmlrpc.php|/wp-(app|cron|login|register|mail).php|wp-.*.php|/feed/|index.php|wp-comments-popup.php|wp-links-opml.php|wp-locations.php|sitemap(_index)?.xml|[a-z0-9_-]+-sitemap([0-9]+)?.xml" ) { set $cache_uri 'null cache'; }
-        - if ( $http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in" ) { set $cache_uri 'null cache'; }
-        - location / {
-            try_files /wp-content/cache/supercache/$http_host/$cache_uri/index.html $uri $uri/ /index.php?$args;
-          }
-        - location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|js|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf|woff2)$ {
-            expires max;
-          }
-        - location ~ \.php$ {
-            try_files $uri =404;
-            fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            include fastcgi_params;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            fastcgi_pass php;
-          }
+        - include snippets/wp_with_supercache.conf
       ultonomy.com.http:
         - listen *:80
         - listen [::]:80
@@ -266,25 +209,7 @@
         - ssl_certificate "/etc/ssl/letsencrypt/ultonomy.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/ultonomy.com.pem"
         - include snippets/sslstapling_hsts.conf
-        - set $cache_uri $request_uri
-        - if ( $request_method = POST ) { set $cache_uri 'null cache'; }
-        - if ( $query_string != "" ) { set $cache_uri 'null cache'; }
-        - if ( $request_uri ~* "/wp-admin/|/xmlrpc.php|/wp-(app|cron|login|register|mail).php|wp-.*.php|/feed/|index.php|wp-comments-popup.php|wp-links-opml.php|wp-locations.php|sitemap(_index)?.xml|[a-z0-9_-]+-sitemap([0-9]+)?.xml" ) { set $cache_uri 'null cache'; }
-        - if ( $http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in" ) { set $cache_uri 'null cache'; }
-        - location / {
-            try_files /wp-content/cache/supercache/$http_host/$cache_uri/index.html $uri $uri/ /index.php?$args;
-          }
-        - location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|js|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf|woff2)$ {
-            expires max;
-          }
-        - location ~ \.php$ {
-            try_files $uri =404;
-            fastcgi_split_path_info ^(.+\.php)(/.+)$;
-            include fastcgi_params;
-            fastcgi_index index.php;
-            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-            fastcgi_pass php;
-          }
+        - include snippets/wp_with_supercache.conf
       bastetrix.com.http:
         - listen *:80
         - listen [::]:80
