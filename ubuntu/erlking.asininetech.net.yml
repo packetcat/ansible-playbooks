@@ -26,9 +26,7 @@
         - client_max_body_size 10M
         - ssl_certificate "/etc/ssl/letsencrypt/asininetech.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/asininetech.com.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - add_header Strict-Transport-Security max-age=31536000
+        - include snippets/sslstapling_hsts.conf
         - set $cache_uri $request_uri
         - if ( $request_method = POST ) { set $cache_uri 'null cache'; }
         - if ( $query_string != "" ) { set $cache_uri 'null cache'; }
@@ -64,9 +62,7 @@
         - error_log "/var/log/nginx/entropynet.net.error.log"
         - ssl_certificate "/etc/ssl/letsencrypt/entropynet.net.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/entropynet.net.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - add_header Strict-Transport-Security max-age=31536000
+        - include snippets/sslstapling_hsts.conf
       twoshadesofbrown.com.http:
         - listen *:80
         - listen [::]:80
@@ -83,9 +79,7 @@
         - client_max_body_size 10M
         - ssl_certificate "/etc/ssl/letsencrypt/twoshadesofbrown.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/twoshadesofbrown.com.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - add_header Strict-Transport-Security max-age=31536000
+        - include snippets/sslstapling_hsts.conf
         - set $cache_uri $request_uri
         - if ( $request_method = POST ) { set $cache_uri 'null cache'; }
         - if ( $query_string != "" ) { set $cache_uri 'null cache'; }
@@ -123,9 +117,7 @@
         - error_log "/var/log/nginx/wiki.staticsafe.ca.error.log"
         - ssl_certificate "/etc/ssl/letsencrypt/wiki.staticsafe.ca.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/wiki.staticsafe.ca.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - add_header Strict-Transport-Security max-age=31536000
+        - include snippets/sslstapling_hsts.conf
         - location ~ /(data|conf|bin|inc)/ {
             deny all;
           }
@@ -156,9 +148,7 @@
         - error_log "/var/log/nginx/sadiqsaif.com.error.log"
         - ssl_certificate "/etc/ssl/letsencrypt/sadiqsaif.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/sadiqsaif.com.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - add_header Strict-Transport-Security max-age=31536000
+        - include snippets/sslstapling_hsts.conf
       ttrss.sadiqsaif.com.http:
         - listen *:80
         - listen [::]:80
@@ -175,9 +165,7 @@
         - client_max_body_size 10M
         - ssl_certificate "/etc/ssl/letsencrypt/ttrss.sadiqsaif.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/ttrss.sadiqsaif.com.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - add_header Strict-Transport-Security max-age=31536000
+        - include snippets/sslstapling_hsts.conf
         - location /cache {
             deny all;
           }
@@ -210,9 +198,7 @@
         - error_log "/var/log/nginx/wiki.tenforward.social.error.log"
         - ssl_certificate "/etc/ssl/letsencrypt/wiki.tenforward.social.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/wiki.tenforward.social.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - add_header Strict-Transport-Security max-age=31536000
+        - include snippets/sslstapling_hsts.conf
         - location ~ /(data|conf|bin|inc)/ {
             deny all;
           }
@@ -243,9 +229,7 @@
         - client_max_body_size 10M
         - ssl_certificate "/etc/ssl/letsencrypt/irreverent.space.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/irreverent.space.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - add_header Strict-Transport-Security max-age=31536000
+        - include snippets/sslstapling_hsts.conf
         - set $cache_uri $request_uri
         - if ( $request_method = POST ) { set $cache_uri 'null cache'; }
         - if ( $query_string != "" ) { set $cache_uri 'null cache'; }
@@ -281,9 +265,7 @@
         - client_max_body_size 10M
         - ssl_certificate "/etc/ssl/letsencrypt/ultonomy.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/ultonomy.com.pem"
-        - ssl_stapling on
-        - resolver [::1] valid=300s
-        - add_header Strict-Transport-Security max-age=31536000
+        - include snippets/sslstapling_hsts.conf
         - set $cache_uri $request_uri
         - if ( $request_method = POST ) { set $cache_uri 'null cache'; }
         - if ( $query_string != "" ) { set $cache_uri 'null cache'; }
