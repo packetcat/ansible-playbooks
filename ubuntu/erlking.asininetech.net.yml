@@ -324,6 +324,10 @@
         - ssl_certificate_key "/etc/ssl/letsencrypt/sadiqsaif.com.pem"
         - include snippets/sslstapling_hsts.conf
     nginx_configs:
+      sslstapling_hsts:
+        - ssl_stapling on
+        - resolver [2607:f2f8:0:101::a] valid=300s
+        - add_header Strict-Transport-Security max-age=31536000
       gzip:
         - gzip on
         - gzip_disable msie6
