@@ -305,11 +305,53 @@
         - ssl_certificate "/etc/ssl/letsencrypt/bastetrix.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/bastetrix.com.pem"
         - include snippets/sslstapling_hsts.conf
+      poetry.packetcat.ca.http:
+        - listen *:80
+        - listen [::]:80
+        - server_name poetry.packetcat.ca
+        - root "/srv/www/poetry.packetcat.ca"
+        - location /.well-known/acme-challenge/ {
+            allow all;
+          }
+        - return 301 "https://$host$request_uri"
+      poetry.packetcat.ca.https:
+        - listen *:443 ssl http2
+        - listen [::]:443 ssl http2
+        - server_name poetry.packetcat.ca
+        - root "/srv/www/poetry.packetcat.ca"
+        - index index.php index.html
+        - access_log "/var/log/nginx/poetry.packetcat.ca.access.log"
+        - error_log "/var/log/nginx/poetry.packetcat.ca.error.log"
+        - client_max_body_size 10M
+        - ssl_certificate "/etc/ssl/letsencrypt/sadiqsaif.com.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/sadiqsaif.com.pem"
+        - include snippets/sslstapling_hsts.conf
+        - include snippets/wp_with_supercache.conf
     nginx_snippets:
       sslstapling_hsts:
         - ssl_stapling on
         - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
+      wp_with_supercache:
+        - set $cache_uri $request_uri
+        - if ( $request_method = POST ) { set $cache_uri 'null cache'; }
+        - if ( $query_string != "" ) { set $cache_uri 'null cache'; }
+        - if ( $request_uri ~* "/wp-admin/|/xmlrpc.php|/wp-(app|cron|login|register|mail).php|wp-.*.php|/feed/|index.php|wp-comments-popup.php|wp-links-opml.php|wp-locations.php|sitemap(_index)?.xml|[a-z0-9_-]+-sitemap([0-9]+)?.xml" ) { set $cache_uri 'null cache'; }
+        - if ( $http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in" ) { set $cache_uri 'null cache'; }
+        - location / {
+            try_files /wp-content/cache/supercache/$http_host/$cache_uri/index.html $uri $uri/ /index.php?$args;
+          }
+        - location ~* \.(ogg|ogv|svg|svgz|eot|otf|woff|mp4|ttf|css|rss|atom|js|jpg|jpeg|gif|png|ico|zip|tgz|gz|rar|bz2|doc|xls|exe|ppt|tar|mid|midi|wav|bmp|rtf|woff2)$ {
+            expires max;
+          }
+        - location ~ \.php$ {
+            try_files $uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            include fastcgi_params;
+            fastcgi_index index.php;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_pass php;
+          }
     nginx_configs:
       gzip:
         - gzip on
