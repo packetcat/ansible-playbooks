@@ -252,11 +252,47 @@
         - ssl_certificate_key "/etc/ssl/letsencrypt/poetry.packetcat.ca.pem"
         - include snippets/sslstapling_hsts.conf
         - include snippets/wp_with_supercache.conf
+      wiki.bastetrix.org.http:
+        - listen *:80
+        - listen [::]:80
+        - server_name wiki.bastetrix.org
+        - root "/srv/www/wiki.bastetrix.org"
+        - location /.well-known/acme-challenge/ {
+            allow all;
+          }
+        - return 301 "https://$host$request_uri"
+      wiki.bastetrix.org.https:
+        - listen *:443 ssl http2
+        - listen [::]:443 ssl http2
+        - server_name wiki.bastetrix.org
+        - root "/srv/www/wiki.bastetrix.org"
+        - index index.php
+        - access_log "/var/log/nginx/wiki.bastetrix.org.access.log"
+        - error_log "/var/log/nginx/wiki.bastetrix.org.error.log"
+        - ssl_certificate "/etc/ssl/letsencrypt/wiki.staticsafe.ca.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/wiki.staticsafe.ca.pem"
+        - include snippets/sslstapling_hsts.conf
+        - location ~ /(data|conf|bin|inc)/ {
+            deny all;
+          }
+        - include snippets/php_standard.conf
     nginx_snippets:
       sslstapling_hsts:
         - ssl_stapling on
         - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
+      php_standard:
+        - location / {
+            try_files $uri $uri/ /index.php?$args;
+          }
+        - location ~ \.php$ {
+            try_files $uri =404;
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            include fastcgi_params;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            fastcgi_pass php;
+            fastcgi_index index.php;
+          }
       wp_with_supercache:
         - set $cache_uri $request_uri
         - if ( $request_method = POST ) { set $cache_uri 'null cache'; }
