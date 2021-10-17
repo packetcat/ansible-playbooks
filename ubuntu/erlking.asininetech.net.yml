@@ -312,6 +312,17 @@
             allow all;
           }
         - return 301 "https://$host$request_uri"
+      bastetrix.com.https:
+        - listen *:443 ssl http2
+        - listen [::]:443 ssl http2
+        - server_name bastetrix.com
+        - root "/srv/www/bastetrix.com/public"
+        - index index.html
+        - access_log "/var/log/nginx/bastetrix.com.access.log"
+        - error_log "/var/log/nginx/bastetrix.com.error.log"
+        - ssl_certificate "/etc/ssl/letsencrypt/sadiqsaif.com.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/sadiqsaif.com.pem"
+        - include snippets/sslstapling_hsts.conf
     nginx_configs:
       gzip:
         - gzip on
