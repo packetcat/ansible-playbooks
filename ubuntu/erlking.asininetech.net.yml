@@ -323,8 +323,8 @@
         - access_log "/var/log/nginx/poetry.packetcat.ca.access.log"
         - error_log "/var/log/nginx/poetry.packetcat.ca.error.log"
         - client_max_body_size 10M
-        - ssl_certificate "/etc/ssl/letsencrypt/sadiqsaif.com.crt"
-        - ssl_certificate_key "/etc/ssl/letsencrypt/sadiqsaif.com.pem"
+        - ssl_certificate "/etc/ssl/letsencrypt/poetry.packetcat.ca.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/poetry.packetcat.ca.pem"
         - include snippets/sslstapling_hsts.conf
         - include snippets/wp_with_supercache.conf
     nginx_snippets:
