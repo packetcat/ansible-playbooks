@@ -326,7 +326,7 @@
     nginx_snippets:
       sslstapling_hsts:
         - ssl_stapling on
-        - resolver [2607:f2f8:0:101::a] valid=300s
+        - resolver [::1] valid=300s
         - add_header Strict-Transport-Security max-age=31536000
     nginx_configs:
       gzip:
