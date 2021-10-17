@@ -269,8 +269,8 @@
         - index index.php
         - access_log "/var/log/nginx/wiki.bastetrix.org.access.log"
         - error_log "/var/log/nginx/wiki.bastetrix.org.error.log"
-        - ssl_certificate "/etc/ssl/letsencrypt/wiki.staticsafe.ca.crt"
-        - ssl_certificate_key "/etc/ssl/letsencrypt/wiki.staticsafe.ca.pem"
+        - ssl_certificate "/etc/ssl/letsencrypt/wiki.bastetrix.org.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/wiki.bastetrix.org.pem"
         - include snippets/sslstapling_hsts.conf
         - location ~ /(data|conf|bin|inc)/ {
             deny all;
