@@ -320,8 +320,8 @@
         - index index.html
         - access_log "/var/log/nginx/bastetrix.com.access.log"
         - error_log "/var/log/nginx/bastetrix.com.error.log"
-        - ssl_certificate "/etc/ssl/letsencrypt/sadiqsaif.com.crt"
-        - ssl_certificate_key "/etc/ssl/letsencrypt/sadiqsaif.com.pem"
+        - ssl_certificate "/etc/ssl/letsencrypt/bastetrix.com.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/bastetrix.com.pem"
         - include snippets/sslstapling_hsts.conf
     nginx_snippets:
       sslstapling_hsts:
