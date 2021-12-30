@@ -42,8 +42,8 @@
         - access_log "/var/log/nginx/nullrouted.space.access.log"
         - error_log "/var/log/nginx/nullrouted.space.error.log"
         - client_max_body_size 10M
-        - ssl_certificate "/etc/ssl/letsencrypt/asininetech.com.crt"
-        - ssl_certificate_key "/etc/ssl/letsencrypt/asininetech.com.pem"
+        - ssl_certificate "/etc/ssl/letsencrypt/nullrouted.space.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/nullrouted.space.pem"
         - include snippets/sslstapling_hsts.conf
         - include snippets/wp_with_supercache.conf
       entropynet.net.http:
