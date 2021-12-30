@@ -14,20 +14,16 @@
         - listen *:80
         - listen [::]:80
         - server_name asininetech.com
-        - return 301 "https://$host$request_uri"
+        - return 301 "https://nullrouted.space$request_uri"
       asininetech.com.https:
         - listen *:443 ssl http2
         - listen [::]:443 ssl http2
         - server_name asininetech.com
-        - root "/srv/www/asininetech.com"
-        - index index.php index.html
         - access_log "/var/log/nginx/asininetech.com.access.log"
         - error_log "/var/log/nginx/asininetech.com.error.log"
-        - client_max_body_size 10M
         - ssl_certificate "/etc/ssl/letsencrypt/asininetech.com.crt"
         - ssl_certificate_key "/etc/ssl/letsencrypt/asininetech.com.pem"
-        - include snippets/sslstapling_hsts.conf
-        - include snippets/wp_with_supercache.conf
+        - return 301 "https://nullrouted.space$request_uri"
       nullrouted.space.http:
         - listen *:80
         - listen [::]:80
