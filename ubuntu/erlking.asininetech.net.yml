@@ -28,6 +28,24 @@
         - ssl_certificate_key "/etc/ssl/letsencrypt/asininetech.com.pem"
         - include snippets/sslstapling_hsts.conf
         - include snippets/wp_with_supercache.conf
+      nullrouted.space.http:
+        - listen *:80
+        - listen [::]:80
+        - server_name nullrouted.space
+        - return 301 "https://$host$request_uri"
+      nullrouted.space.https:
+        - listen *:443 ssl http2
+        - listen [::]:443 ssl http2
+        - server_name nullrouted.space
+        - root "/srv/www/nullrouted.space"
+        - index index.php index.html
+        - access_log "/var/log/nginx/nullrouted.space.access.log"
+        - error_log "/var/log/nginx/nullrouted.space.error.log"
+        - client_max_body_size 10M
+        - ssl_certificate "/etc/ssl/letsencrypt/asininetech.com.crt"
+        - ssl_certificate_key "/etc/ssl/letsencrypt/asininetech.com.pem"
+        - include snippets/sslstapling_hsts.conf
+        - include snippets/wp_with_supercache.conf
       entropynet.net.http:
         - listen *:80
         - listen [::]:80
