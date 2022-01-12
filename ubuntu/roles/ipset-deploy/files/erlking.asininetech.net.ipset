@@ -29,3 +29,12 @@ add nasties 173.231.59.0/24
 add nasties 217.160.142.105/32
 # MegaIndex.ru Crawler
 add nasties 176.9.41.28/32
+# AS206728 Media Land LLC, seems to be botnet IPs
+add nasties 45.141.84.0/24
+add nasties 45.141.85.0/24
+add nasties 45.141.86.0/24
+add nasties 45.141.87.0/24
+add nasties 91.220.163.0/24
+add nasties 193.242.153.0/24
+add nasties 194.26.29.0/24
+add nasties 194.113.209.0/24
