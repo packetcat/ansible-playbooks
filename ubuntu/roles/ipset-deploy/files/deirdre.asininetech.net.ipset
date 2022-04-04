@@ -50,3 +50,5 @@ add nasties 91.220.163.0/24
 add nasties 193.242.153.0/24
 add nasties 194.26.29.0/24
 add nasties 194.113.209.0/24
+# webmeup crawler, doesn't respect robots.txt
+add nasties 157.90.177.214/32
