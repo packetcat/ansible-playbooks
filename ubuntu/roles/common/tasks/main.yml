@@ -1,8 +1,12 @@
 ---
 # This playbook contains common plays that will be run all nodes.
 
-- name: Install python-apt, aptitude, and debconf-utils
+- name: Install python-apt, aptitude, and debconf-utils (20.04)
   shell: apt-get update && apt-get -y install python-apt aptitude debconf-utils
+  when: ansible_distribution_release == 'focal'
+- name: Install python-apt, aptitude, and debconf-utils (22.04)
+  shell: apt-get update && apt-get -y install python3-apt aptitude debconf-utils
+  when: ansible_distribution_release == 'jammy'
 - name: Do any package upgrades
   apt: upgrade=dist
 - name: Set default locale to en_US.UTF-8
