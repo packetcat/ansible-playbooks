@@ -1,0 +1,28 @@
+---
+- hosts: sanya.asininetech.net
+
+  roles:
+  - role: jdauphant.nginx
+    nginx_user: "www-data"
+    nginx_events_params:
+      - worker_connections 1024
+    nginx_http_params:
+      - sendfile "on"
+      - server_names_hash_bucket_size 512
+    nginx_sites:
+      git.packetcat.ca.http:
+        - listen *:80
+        - listen [::]:80
+        - server_name git.packetcat.ca
+    nginx_configs:
+      gzip:
+        - gzip on
+        - gzip_disable msie6
+        - gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript
+      ssl:
+        - ssl_protocols TLSv1.2 TLSv1.3
+        - ssl_prefer_server_ciphers on
+        - ssl_ciphers 'ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-RSA-AES256-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256'
+        - ssl_session_timeout 1d
+        - ssl_session_cache shared:SSL:50m
+        - ssl_session_tickets off
