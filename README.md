@@ -1,3 +1,9 @@
+# ARCHIVED
+
+THIS REPOSITORY WAS MOVED.
+
+THE NEW REPOSITORY URL IS: https://git.packetcat.ca/packetcat/ansible-playbooks
+
 ansible-playbooks
 =================
 
